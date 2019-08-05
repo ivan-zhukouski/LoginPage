@@ -1,0 +1,22 @@
+body{
+    background-color: lightgrey;
+}
+.main_form{
+    margin: 10px auto;
+    width: 40%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+.img_block{
+    margin: auto;
+    margin-top: 100px;
+    width: 30%;
+}
+span{
+    font-size: 24px;
+    color:teal;
+}
+
+
+
