@@ -1,11 +1,11 @@
 import React from 'react'
 import './App.css'
-import InputExampleInput from './Components/input'
+import LoginPage from './Components/LoginPage'
 class App extends React.Component{
   render(){
     return(
         <div>
-            <InputExampleInput/>
+            <LoginPage/>
         </div>
     )
   }

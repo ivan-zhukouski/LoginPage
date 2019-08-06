@@ -1,59 +1,49 @@
-import React from 'react'
-import '../App.css'
-import {Input} from 'semantic-ui-react'
-import InputExampleInput from './input'
-class LoginPage extends React.Component {
+import React,{Component} from 'react'
+import { Form,Image } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css'
+import '../form.css'
+const src= '../Images/Logo.png';
+export default class LogoPage extends Component{
     constructor(props){
-        super(props);
-        this.state = {
-            email:'',
+        super(props)
+        this.state={
+            email: '',
             password:'',
-        };
-        this.handleOnChange = this.handleOnChange.bind(this);
-        this.handleOnChangePass = this.handleOnChangePass.bind(this);
-        this.handleOnSubmit = this.handleOnSubmit.bind(this);
-    }
-    handleOnChange(event){
-        console.log('email was changed!')
-        this.setState({email:event.target.value})
-    };
-    handleOnChangePass(event){
-        console.log('pass was changed!')
-        this.setState({password:event.target.value})
-    };
-    handleOnSubmit(event){
-        event.preventDefault();
-        console.log('form was submitted!', 'Password is:', this.state.password,
-            'E-mail is:', this.state.email)
-        if (this.state.email === 'user',this.state.password === 'user'){
-            this.props.history.push({
-                pathname: '/userpage'
-            })
-        }else {
-            this.props.history.push({
-                pathname:'/error'
-            })
+            submittedPassword:'',
+            submittedEmail:'',
         }
     }
-    render() {
+    handleChange = event => this.setState({[event.target.id]:event.target.value});
+    handleSubmit = (event)=> {
+        event.preventDefault();
+        this.setState({submittedEmail: event.target.value,submittedPassword:event.target.value})
+    };
+    render(){
+        console.log(this.state);
         return(
-            <form className='form' onSubmit={this.handleOnSubmit}>
-
-                    <Input focus type="text"
-                       placeholder={'E-mail'}
-                       onChange={this.handleOnChange}
-                       value={this.state.email}/>
-
-
-                    <input  type="password"
-                       placeholder={'password'}
-                       onChange={this.handleOnChangePass}
-                       value={this.state.password} />
-
-                <button className='width_element'>Login</button>
-                <InputExampleInput/>
-            </form>
+            <div>
+                <div className='img_block'>
+                    <Image className='logo_img' src={src} size='tiny' circular verticalAlign='middle'/><span>Log-in to your account</span>
+                </div>
+                <Form className = 'main_form' onSubmit={this.handleSubmit}>
+                    <Form.Field >
+                        <Form.Input icon='user'
+                                    iconPosition='left'
+                                    placeholder='E-mail'
+                                    name='e-mail'
+                                    value={this.state.email}
+                                    onChange={this.handleChange.bind(this)} id='email' />
+                        <Form.Input icon='lock'
+                                    iconPosition='left'
+                                    placeholder='Password'
+                                    type='password'
+                                    name='password'
+                                    value={this.state.password}
+                                    onChange={this.handleChange.bind(this)} id='password'/>
+                    </Form.Field >
+                    <Form.Button fluid color='teal' content='Submit'/>
+                </Form>
+            </div>
         )
     }
 }
-export default LoginPage
