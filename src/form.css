@@ -3,7 +3,7 @@ body{
 }
 .main_form{
     margin: 10px auto;
-    width: 40%;
+    width: 30%;
     background-color: white;
     padding: 10px;
     border-radius: 10px;
@@ -12,11 +12,33 @@ body{
     margin: auto;
     margin-top: 100px;
     width: 30%;
+    display: block;
 }
-span{
-    font-size: 24px;
-    color:teal;
+.img_text {
+    font-size: 20px;
+    color: teal;
+}
+.logo_img{
+    margin-left: 15px;
+    width: 60px;
+    height: 60px;
 }
 
+@media screen and (max-width: 768px){
+    .main_form{
+        width: 40%;
+    }
+    .img_text{
+        font-size: 15px;
+    }
+}
 
-
+@media screen and (max-width: 550px){
+    .main_form{
+        width: 50%;
+    }
+    .logo_img{
+        width: 30px;
+        height: 30px;
+    }
+}

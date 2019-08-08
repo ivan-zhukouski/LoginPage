@@ -17,25 +17,36 @@ export default class LogoPage extends Component{
     handleSubmit = (event)=> {
         const {email, password} = this.state;
         this.setState({submittedEmail: email,submittedPassword:password});
-        console.log('Submitted email is ' + this.state.submittedEmail + ' and password is '+ this.state.submittedPassword)
+        console.log('Submitted email is ' + this.state.submittedEmail + ' and password is '+ this.state.submittedPassword);
         event.preventDefault();
+        if (this.state.submittedEmail === 'stig' , this.state.submittedPassword === 'stig'){
+           alert('Hi Stig');
+        }
+        else{
+            this.props.history.push({
+                pathname: '/error'
+            })
+        }
     };
     render(){
         return(
-            <div>
+            <div className='container'>
                 <div className='img_block'>
-                    <Image className='logo_img' src={src} size='tiny' circular verticalAlign='middle'/><span>Log-in to your account</span>
+                    <Image className='logo_img' src={src} circular verticalAlign='middle'/>
+                    <span className='img_text'>Log-in to your account</span>
+
                 </div>
                 <Form className = 'main_form' onSubmit={this.handleSubmit.bind(this)}>
                     <Form.Field >
-                        <Form.Input icon='user'
+                        <Form.Input transparent size='big'
+                                    icon='user'
                                     iconPosition='left'
                                     placeholder='E-mail'
                                     name='e-mail'
                                     value={this.state.email}
                                     onChange={this.handleChange.bind(this)}
                                     id='email' />
-                        <Form.Input icon='lock'
+                        <Form.Input transparent size='big' icon='lock'
                                     iconPosition='left'
                                     placeholder='Password'
                                     type='password'
