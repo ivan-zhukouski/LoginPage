@@ -29,7 +29,7 @@ export default class ErrorSubmit extends React.Component{
                         <Message
                             error
                             header='Error'
-                            content='E-mail address or password incorrect'
+                            content='E-mail address or password is incorrect'
                         />
                     </Form.Field >
                     <Button fluid color='teal' content='Go back' onClick={this.handleOnClick.bind(this)}/>

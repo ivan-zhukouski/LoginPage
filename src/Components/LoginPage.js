@@ -14,19 +14,19 @@ export default class LogoPage extends Component{
         }
     }
     handleChange = event => this.setState({[event.target.id]:event.target.value});
-    handleSubmit = (event)=> {
+    handleSubmit (event){
+        event.preventDefault();
         const {email, password} = this.state;
         this.setState({submittedEmail: email,submittedPassword:password});
         console.log('Submitted email is ' + this.state.submittedEmail + ' and password is '+ this.state.submittedPassword);
-        event.preventDefault();
-        if (this.state.submittedEmail === 'stig' , this.state.submittedPassword === 'stig'){
-           alert('Hi Stig');
-        }
-        else{
-            this.props.history.push({
-                pathname: '/error'
-            })
-        }
+        // if (this.state.submittedEmail === 'stig' , this.state.submittedPassword === 'stig'){
+        //    alert('Hi Stig');
+        // }
+        // else{
+        //     this.props.history.push({
+        //         pathname: '/error'
+        //     })
+        // }
     };
     render(){
         return(
