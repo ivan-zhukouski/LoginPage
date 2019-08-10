@@ -14,7 +14,6 @@ export default class LogoPage extends Component{
             loading: false,
             errorForm: false,
             errorInput: false,
-
         };
         this.handleOnSubmit=this.handleOnSubmit.bind(this);
         this.handleChange=this.handleChange.bind(this)
@@ -25,11 +24,14 @@ export default class LogoPage extends Component{
         console.log('Submitted email is ' + this.state.email +
             ' and password is '+ this.state.password);
         if (this.state.email === 'stig' , this.state.password === 'stig'){
-             alert('Hi Stig');
+            this.setState({errorForm:false,errorInput:false});
+            this.setState({loading:true});
+            console.log('Hi Stig');
+
           }
-        // if(!this.state.email && !this.state.password){
-        //     this.setState({errorForm:true,errorInput:true})
-        // }
+        else{
+           this.setState({errorForm:true,errorInput:true})
+        }
     }
     render(){
         return(
