@@ -9,8 +9,6 @@ export default class LogoPage extends Component{
         this.state={
             email: '',
             password:'',
-            submittedEmail:'',
-            submittedPassword:'',
             loading: false,
             errorForm: false,
             errorInput: false,
@@ -21,16 +19,14 @@ export default class LogoPage extends Component{
     handleChange = event => this.setState({[event.target.id]:event.target.value});
     handleOnSubmit (event){
         event.preventDefault();
-        console.log('Submitted email is ' + this.state.email +
-            ' and password is '+ this.state.password);
-        if (this.state.email === 'stig' , this.state.password === 'stig'){
-            this.setState({errorForm:false,errorInput:false});
-            this.setState({loading:true});
-            console.log('Hi Stig');
-
-          }
-        else{
-           this.setState({errorForm:true,errorInput:true})
+        this.props.onSubmit(this.state);
+         console.log(event);
+         if (this.state.email==='vano@gmail.com', this.state.password === '111111'){
+             this.setState({errorForm:false,errorInput:false});
+             this.setState({loading:true});
+        }
+         else{
+           this.setState({errorForm:true,errorInput:true, loading:false, email:'', password:''})
         }
     }
     render(){
@@ -49,6 +45,7 @@ export default class LogoPage extends Component{
                       >
                     <Form.Field >
                         <Form.Input error={this.state.errorInput}
+                                    type='email'
                                     transparent
                                     size='big'
                                     icon='user'
