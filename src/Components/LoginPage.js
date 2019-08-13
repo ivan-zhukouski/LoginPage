@@ -16,18 +16,19 @@ export default class LogoPage extends Component{
         this.handleOnSubmit=this.handleOnSubmit.bind(this);
         this.handleChange=this.handleChange.bind(this)
     }
+
     handleChange = event => this.setState({[event.target.id]:event.target.value});
     handleOnSubmit (event){
         event.preventDefault();
         this.props.onSubmit(this.state);
          console.log(event);
-         if (this.state.email==='vano@gmail.com', this.state.password === '111111'){
-             this.setState({errorForm:false,errorInput:false});
-             this.setState({loading:true});
-        }
-         else{
-           this.setState({errorForm:true,errorInput:true, loading:false, email:'', password:''})
-        }
+          if (this.state.email==='vano@gmail.com', this.state.password === '111111'){
+              this.setState({errorForm:false,errorInput:false});
+              this.setState({loading:true});
+         }
+          else{
+            this.setState({errorForm:true,errorInput:true, loading:false, email:'', password:''})
+         }
     }
     render(){
         return(
@@ -37,7 +38,7 @@ export default class LogoPage extends Component{
                            src={src}
                            circular
                            verticalAlign='middle'/>
-                    <span className='img_text'>Log-in to your account</span>
+                    <span className='img_text'>Log-in</span>
 
                 </div>
                 <Form error={this.state.errorForm}

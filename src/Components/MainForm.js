@@ -4,12 +4,14 @@ import { createBlogPost} from "./SomeThing";
 
 export default class Form extends Component{
     handleOnSubmit(data){
-      createBlogPost(data)
+      createBlogPost(data).then((data)=>{
+          console.log(data);
+      })
     }
     render(){
         return(
             <div>
-                <LoginPage onSubmit={this.handleOnSubmit}/>
+                <LoginPage onSubmit={this.handleOnSubmit} />
             </div>
         )
     }

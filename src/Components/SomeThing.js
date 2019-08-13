@@ -7,7 +7,9 @@ export function createBlogPost(data){
         headers: {
             'Content-type': 'application/json'
         }
-    }).then(res =>{
-        return res;
-    }).catch(err=>err);
+    }).then(response =>{
+        response.json();
+    }).catch(()=>{
+        this.setState({errorForm:true})
+    });
 }
