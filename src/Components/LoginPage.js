@@ -22,7 +22,7 @@ export default class LogoPage extends Component{
         event.preventDefault();
         this.props.onSubmit(this.state);
          console.log(event);
-          if (this.state.email==='vano@gmail.com', this.state.password === '111111'){
+          if (this.state.email==='vano@gmail.com' || this.state.password === '111111'){
               this.setState({errorForm:false,errorInput:false});
               this.setState({loading:true});
          }
