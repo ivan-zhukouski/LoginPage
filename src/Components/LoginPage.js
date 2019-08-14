@@ -10,9 +10,8 @@ export default class LogoPage extends Component{
         this.state={
             email: '',
             password:'',
-            loading: false,
-            errorForm: false,
-            errorInput: false,
+            isLoading: false,
+            error: false,
         };
         this.handleOnSubmit=this.handleOnSubmit.bind(this);
         this.handleChange=this.handleChange.bind(this)
@@ -28,11 +27,18 @@ export default class LogoPage extends Component{
                 'Content-type': 'application/json'
             }
         }).then(response =>{
+            if(response.ok){
+                this.setState({isLoading:true})
+            }
+            else{
+                this.setState({error:true,isLoading:false, email:'',password:''})
+            }
             return response.json();
         }).then((data)=>{
             console.log(data);
-        })
+        });
     }
+
     render(){
         return(
             <div className='container'>
@@ -44,11 +50,11 @@ export default class LogoPage extends Component{
                     <span className='img_text'>Log-in</span>
 
                 </div>
-                <Form error={this.state.errorForm}
+                <Form error={this.state.error}
                       className = 'main_form'
                       >
                     <Form.Field >
-                        <Form.Input error={this.state.errorInput}
+                        <Form.Input error={this.state.error}
                                     type='email'
                                     transparent
                                     size='big'
@@ -59,7 +65,7 @@ export default class LogoPage extends Component{
                                     value={this.state.email}
                                     onChange={this.handleChange}
                                     id='email' />
-                        <Form.Input error={this.state.errorInput}
+                        <Form.Input error={this.state.error}
                                     transparent
                                     size='big'
                                     icon='lock'
@@ -76,7 +82,7 @@ export default class LogoPage extends Component{
                             content='The E-mail address or password is incorrect'
                         />
                     </Form.Field >
-                    <Form.Button loading={this.state.loading}
+                    <Form.Button loading={this.state.isLoading}
                                  fluid
                                  color='teal'
                                  content='Submit' onClick={this.handleOnSubmit}/>
