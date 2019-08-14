@@ -20,14 +20,16 @@ export default class LogoPage extends Component{
     handleOnSubmit (event){
         event.preventDefault();
         console.log(event);
+        let json = JSON.stringify({email:this.state.email, password: this.state.password});
         fetch('https://www.api.fastbuy.by/kiosk/api/v1/auth/login',{
             method:'POST',
-            body: JSON.stringify({email:this.state.email, password: this.state.password}),
+            body: json,
             headers: {
                 'Content-type': 'application/json'
             }
         }).then(response =>{
             response.ok ? this.setState({isLoading:true,error:false}): new Promise.reject();
+            localStorage.setItem('key',json);
             return response.json();
         }).then((data)=>{
             console.log(data);
@@ -36,7 +38,6 @@ export default class LogoPage extends Component{
             this.setState({error:true,isLoading:false, email:'',password:''});
         })
     }
-
     render(){
         return(
             <div className='container'>
