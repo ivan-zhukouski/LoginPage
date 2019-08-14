@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import {Form, Image, Message} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import '../form.css'
+
 const src= '../Images/Logo.png';
 export default class LogoPage extends Component{
     constructor(props){
@@ -16,19 +17,30 @@ export default class LogoPage extends Component{
         this.handleOnSubmit=this.handleOnSubmit.bind(this);
         this.handleChange=this.handleChange.bind(this)
     }
-
     handleChange = event => this.setState({[event.target.id]:event.target.value});
     handleOnSubmit (event){
+
         event.preventDefault();
-        this.props.onSubmit(this.state);
-         console.log(event);
-          if (this.state.email==='vano@gmail.com' || this.state.password === '111111'){
-              this.setState({errorForm:false,errorInput:false});
-              this.setState({loading:true});
-         }
-          else{
-            this.setState({errorForm:true,errorInput:true, loading:false, email:'', password:''})
-         }
+        // this.props.onSubmit(this.state);
+        console.log(event);
+          if (this.state.email==='vano@gmail.com' && this.state.password === '111111'){
+               this.setState({errorForm:false,errorInput:false});
+               this.setState({loading:true});
+          }
+           else{
+             this.setState({errorForm:true,errorInput:true, loading:false, email:'', password:''})
+          }
+        fetch('https://www.api.fastbuy.by/kiosk/api/v1/auth/login',{
+            method:'POST',
+            body: JSON.stringify(this.state),
+            headers: {
+                'Content-type': 'application/json'
+            }
+        }).then(response =>{
+            return response.json();
+        }).then((data)=>{
+            console.log(data);
+        })
     }
     render(){
         return(
@@ -54,7 +66,7 @@ export default class LogoPage extends Component{
                                     placeholder='E-mail'
                                     name='e-mail'
                                     value={this.state.email}
-                                    onChange={this.handleChange.bind(this)}
+                                    onChange={this.handleChange}
                                     id='email' />
                         <Form.Input error={this.state.errorInput}
                                     transparent
