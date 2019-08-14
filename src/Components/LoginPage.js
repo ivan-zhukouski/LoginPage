@@ -27,12 +27,9 @@ export default class LogoPage extends Component{
                 'Content-type': 'application/json'
             }
         }).then(response =>{
-            if(response.ok){
-                this.setState({isLoading:true})
-            }
-            else{
-                this.setState({error:true,isLoading:false, email:'',password:''})
-            }
+            response.ok ? this.setState({isLoading:true}):
+                this.setState({error:true,isLoading:false, email:'',password:''});
+
             return response.json();
         }).then((data)=>{
             console.log(data);
