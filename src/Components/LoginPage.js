@@ -27,13 +27,14 @@ export default class LogoPage extends Component{
                 'Content-type': 'application/json'
             }
         }).then(response =>{
-            response.ok ? this.setState({isLoading:true}):
-                this.setState({error:true,isLoading:false, email:'',password:''});
-
+            response.ok ? this.setState({isLoading:true,error:false}): new Promise.reject();
             return response.json();
         }).then((data)=>{
             console.log(data);
-        });
+        }).catch((error)=>{
+            console.log(error);
+            this.setState({error:true,isLoading:false, email:'',password:''});
+        })
     }
 
     render(){
