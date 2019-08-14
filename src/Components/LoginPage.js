@@ -19,20 +19,11 @@ export default class LogoPage extends Component{
     }
     handleChange = event => this.setState({[event.target.id]:event.target.value});
     handleOnSubmit (event){
-
         event.preventDefault();
-        // this.props.onSubmit(this.state);
         console.log(event);
-          if (this.state.email==='vano@gmail.com' && this.state.password === '111111'){
-               this.setState({errorForm:false,errorInput:false});
-               this.setState({loading:true});
-          }
-           else{
-             this.setState({errorForm:true,errorInput:true, loading:false, email:'', password:''})
-          }
         fetch('https://www.api.fastbuy.by/kiosk/api/v1/auth/login',{
             method:'POST',
-            body: JSON.stringify(this.state),
+            body: JSON.stringify({email:this.state.email, password: this.state.password}),
             headers: {
                 'Content-type': 'application/json'
             }
