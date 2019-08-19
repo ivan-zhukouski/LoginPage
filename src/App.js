@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
 import LoginPage from './Components/LoginPage'
+import UserPage from './Components/UserPage'
 import {Route, Switch} from 'react-router-dom'
 class App extends React.Component{
   render(){
@@ -8,6 +9,7 @@ class App extends React.Component{
         <div>
             <Switch>
                 <Route path='/' exact component={LoginPage}/>
+                <Route path='/v1/users/profile' component={UserPage}/>
             </Switch>
         </div>
     )

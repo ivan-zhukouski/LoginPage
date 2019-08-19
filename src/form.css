@@ -1,6 +1,10 @@
 body{
     background-color: lightgrey;
 }
+.container{
+    margin: 0 auto;
+    max-width: 960px;
+}
 .main_form{
     margin: 10px auto;
     width: 30%;
@@ -9,27 +13,25 @@ body{
     border-radius: 10px;
 }
 .img_block{
-    margin: auto;
-    margin-top: 100px;
+    margin: 100px auto 0;
     width: 30%;
     display: block;
+
 }
 .img_text {
+    margin: 0 auto;
+    display: block;
     font-size: 20px;
     color: teal;
+    max-width: 70px;
 }
-.logo_img{
-    margin-left: 15px;
-    width: 60px;
-    height: 60px;
-}
-
 @media screen and (max-width: 768px){
     .main_form{
         width: 40%;
     }
     .img_text{
-        font-size: 15px;
+        font-size: 20px;
+        max-width: 60px;
     }
 }
 
@@ -37,8 +39,11 @@ body{
     .main_form{
         width: 50%;
     }
-    .logo_img{
-        width: 30px;
-        height: 30px;
+    .img_text{
+        font-size: 15px;
+        max-width: 50px;
+    }
+    .input_Size{
+        font-size: 12px;
     }
 }

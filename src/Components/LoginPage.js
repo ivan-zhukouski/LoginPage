@@ -1,9 +1,8 @@
 import React,{Component} from 'react'
-import {Form, Image, Message} from 'semantic-ui-react'
+import {Form, Message} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import '../form.css'
-
-const src= '../Images/Logo.png';
+import UserPage from "./UserPage";
 export default class LogoPage extends Component{
     constructor(props){
         super(props);
@@ -16,10 +15,11 @@ export default class LogoPage extends Component{
         this.handleOnSubmit=this.handleOnSubmit.bind(this);
         this.handleChange=this.handleChange.bind(this)
     }
-    handleChange = event => this.setState({[event.target.id]:event.target.value});
+    handleChange = event => {
+        this.setState({[event.target.id]:event.target.value})
+    };
     handleOnSubmit (event){
         event.preventDefault();
-        console.log(event);
         let json = JSON.stringify({email:this.state.email, password: this.state.password});
         fetch('https://www.api.fastbuy.by/kiosk/api/v1/auth/login',{
             method:'POST',
@@ -28,29 +28,31 @@ export default class LogoPage extends Component{
                 'Content-type': 'application/json'
             }
         }).then(response =>{
-            response.ok ? this.setState({isLoading:true,error:false}): new Promise.reject();
-            localStorage.setItem('key',json);
-            return response.json();
+            response.ok ? this.setState({isLoading:true,error:false})
+                        : new Promise.reject();
+            this.props.history.push({pathname:'/v1/users/profile'});
+            return  response.json();
         }).then((data)=>{
             console.log(data);
-        }).catch((error)=>{
-            console.log(error);
+            localStorage.setItem('User', JSON.stringify(data))
+        }).catch(()=>{
             this.setState({error:true,isLoading:false, email:'',password:''});
         })
     }
+    // showUser= ()=>{
+    //     this.props.history.push({
+    //         pathname: '/v1/users/profile',
+    //     })
+    // };
     render(){
         return(
             <div className='container'>
                 <div className='img_block'>
-                    <Image className='logo_img'
-                           src={src}
-                           circular
-                           verticalAlign='middle'/>
-                    <span className='img_text'>Log-in</span>
-
+                    <div className='img_text'>Log-in</div>
                 </div>
                 <Form error={this.state.error}
                       className = 'main_form'
+                      onSubmit={this.handleOnSubmit}
                       >
                     <Form.Field >
                         <Form.Input error={this.state.error}
@@ -63,7 +65,8 @@ export default class LogoPage extends Component{
                                     name='e-mail'
                                     value={this.state.email}
                                     onChange={this.handleChange}
-                                    id='email' />
+                                    id='email'
+                                    className='input_Size' />
                         <Form.Input error={this.state.error}
                                     transparent
                                     size='big'
@@ -74,7 +77,8 @@ export default class LogoPage extends Component{
                                     name='password'
                                     value={this.state.password}
                                     onChange={this.handleChange}
-                                    id='password'/>
+                                    id='password'
+                                    className='input_Size'/>
                         <Message
                             error
                             header='Error'
@@ -84,7 +88,7 @@ export default class LogoPage extends Component{
                     <Form.Button loading={this.state.isLoading}
                                  fluid
                                  color='teal'
-                                 content='Submit' onClick={this.handleOnSubmit}/>
+                                 content='Submit' onClick={this.showUser} />
                 </Form>
             </div>
         )
