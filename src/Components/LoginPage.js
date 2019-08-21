@@ -2,7 +2,6 @@ import React,{Component} from 'react'
 import {Form, Message} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import '../form.css'
-import UserPage from "./UserPage";
 export default class LogoPage extends Component{
     constructor(props){
         super(props);
@@ -11,6 +10,7 @@ export default class LogoPage extends Component{
             password:'',
             isLoading: false,
             error: false,
+            clientToken: false,
         };
         this.handleOnSubmit=this.handleOnSubmit.bind(this);
         this.handleChange=this.handleChange.bind(this)
@@ -30,20 +30,15 @@ export default class LogoPage extends Component{
         }).then(response =>{
             response.ok ? this.setState({isLoading:true,error:false})
                         : new Promise.reject();
-            this.props.history.push({pathname:'/v1/users/profile'});
+            this.props.history.push({pathname:'/user/profile'});
             return  response.json();
         }).then((data)=>{
             console.log(data);
             localStorage.setItem('User', JSON.stringify(data))
         }).catch(()=>{
             this.setState({error:true,isLoading:false, email:'',password:''});
-        })
+        });
     }
-    // showUser= ()=>{
-    //     this.props.history.push({
-    //         pathname: '/v1/users/profile',
-    //     })
-    // };
     render(){
         return(
             <div className='container'>
@@ -88,7 +83,7 @@ export default class LogoPage extends Component{
                     <Form.Button loading={this.state.isLoading}
                                  fluid
                                  color='teal'
-                                 content='Submit' onClick={this.showUser} />
+                                 content='Submit' />
                 </Form>
             </div>
         )

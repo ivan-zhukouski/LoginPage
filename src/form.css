@@ -34,7 +34,6 @@ body{
         max-width: 60px;
     }
 }
-
 @media screen and (max-width: 550px){
     .main_form{
         width: 50%;
