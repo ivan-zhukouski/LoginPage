@@ -9,15 +9,13 @@ export default class UserPage extends Component {
  }
 
  componentDidMount() {
-  let url = 'https://www.api.fastbuy.by/kiosk/api/v1/users/profile';
-  let currentUser = JSON.parse(localStorage.getItem('User'));
-  let tokenClient = JSON.stringify(currentUser);
-  let bearer = 'Bearer ' + tokenClient;
+  const url = 'https://www.api.fastbuy.by/kiosk/api/v1/users/profile';
+  const currentUser = JSON.parse(localStorage.getItem('User'));
   fetch(url, {
    method: 'GET',
    headers: {
     'Accept': 'application/json',
-    'Authorization': bearer,
+    'Authorization': `${currentUser.token.tokenType} ${currentUser.token.accessToken}`,
     'Content-Type': 'application/json',
    },
   }).then(response => {
