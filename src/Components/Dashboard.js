@@ -4,8 +4,22 @@ import {Card, Image} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import {NavLink} from "react-router-dom";
 
+const getKiosk = JSON.parse(localStorage.getItem('Kiosks'));
 const url = 'https://www.api.fastbuy.by/kiosk/api/v1/kiosks';
+
 export default class Dashboard extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            addressRu:'',
+            addressEn:'',
+            currency:'',
+            title:'',
+            hoursFrom:'',
+            hoursTo:'',
+            loc:'',
+        }
+    }
     componentDidMount() {
         fetch(url, {
             method: 'GET',
@@ -14,14 +28,22 @@ export default class Dashboard extends Component {
                 'Content-Type': 'application/json'
             }
         }).then(response => {
+            this.setState({addressRu:`${getKiosk[0].address.ru}`,
+                                addressEn:`${getKiosk[0].address.en}`,
+                                title:`${getKiosk[0].title}`,
+                                hoursFrom:`${getKiosk[0].hours.from}`,
+                                hoursTo:`${getKiosk[0].hours.to}`,
+                                currency:`${getKiosk[0].currency}`});
+            console.log(this.state.addressRu);
             return response.json();
         }).then((data) => {
             console.log(data);
+            localStorage.setItem('Kiosks', JSON.stringify(data))
         }).catch(error => {
             console.log(error);
         });
+        console.log(getKiosk);
     }
-
     render() {
         return (
             <div className='container'>
@@ -38,57 +60,9 @@ export default class Dashboard extends Component {
                                     src="https://sc01.alicdn.com/kf/HTB1.5nJSpXXXXbhapXXq6xXFXXXX/Professional-Beverage-kiosk-design-Bubble-Tea-Showcase.jpg_350x350.jpg"
                                     wrapped ui={false}/>
                                 <Card.Content>
-                                    <Card.Header>Demo</Card.Header>
-                                    <Card.Description>Адрес: проспект Победителей 84, Минск (praspiekt Pieramožcaŭ 84,
-                                        Minsk)<br/> Время работы: 9:00 - 24:00 без выходных </Card.Description>
-                                </Card.Content>
-                            </Card>
-                        </NavLink>
-                    </div>
-                    <div className='card'>
-                        <NavLink to={{
-                            pathname: '/kiosks/kiosk'
-                        }}>
-                            <Card>
-                                <Image
-                                    src="https://sc01.alicdn.com/kf/HTB1.5nJSpXXXXbhapXXq6xXFXXXX/Professional-Beverage-kiosk-design-Bubble-Tea-Showcase.jpg_350x350.jpg"
-                                    wrapped ui={false}/>
-                                <Card.Content>
-                                    <Card.Header>Demo 2</Card.Header>
-                                    <Card.Description>Адрес: проспект Победителей 84, Минск (praspiekt Pieramožcaŭ 84,
-                                        Minsk)<br/> Время работы: 9:00 - 24:00 без выходных </Card.Description>
-                                </Card.Content>
-                            </Card>
-                        </NavLink>
-                    </div>
-                    <div className='card'>
-                        <NavLink to={{
-                            pathname: '/kiosks/kiosk'
-                        }}>
-                            <Card>
-                                <Image
-                                    src="https://sc01.alicdn.com/kf/HTB1.5nJSpXXXXbhapXXq6xXFXXXX/Professional-Beverage-kiosk-design-Bubble-Tea-Showcase.jpg_350x350.jpg"
-                                    wrapped ui={false}/>
-                                <Card.Content>
-                                    <Card.Header>Demo 3</Card.Header>
-                                    <Card.Description>Адрес: проспект Победителей 84, Минск (praspiekt Pieramožcaŭ 84,
-                                        Minsk)<br/> Время работы: 9:00 - 24:00 без выходных </Card.Description>
-                                </Card.Content>
-                            </Card>
-                        </NavLink>
-                    </div>
-                    <div className='card'>
-                        <NavLink to={{
-                            pathname: '/kiosks/kiosk'
-                        }}>
-                            <Card>
-                                <Image
-                                    src="https://sc01.alicdn.com/kf/HTB1.5nJSpXXXXbhapXXq6xXFXXXX/Professional-Beverage-kiosk-design-Bubble-Tea-Showcase.jpg_350x350.jpg"
-                                    wrapped ui={false}/>
-                                <Card.Content>
-                                    <Card.Header>Demo 4</Card.Header>
-                                    <Card.Description>Адрес: проспект Победителей 84, Минск (praspiekt Pieramožcaŭ 84,
-                                        Minsk)<br/> Время работы: 9:00 - 24:00 без выходных </Card.Description>
+                                    <Card.Header>{this.state.title}</Card.Header>
+                                    <Card.Description>Адрес:{this.state.addressRu} ({this.state.addressEn})
+                                        <br/> Время работы: {this.state.hoursFrom} - {this.state.hoursTo}<br/>Валюта: {this.state.currency}</Card.Description>
                                 </Card.Content>
                             </Card>
                         </NavLink>
