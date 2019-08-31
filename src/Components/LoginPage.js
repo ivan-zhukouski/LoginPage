@@ -1,55 +1,56 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
 import {Form, Message} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import '../form.css'
-export default class LogoPage extends Component{
-    constructor(props){
+
+export default class LogoPage extends Component {
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             email: '',
-            password:'',
+            password: '',
             isLoading: false,
             error: false,
             clientToken: false,
         };
-        this.handleOnSubmit=this.handleOnSubmit.bind(this);
-        this.handleChange=this.handleChange.bind(this)
     }
+
     handleChange = event => {
-        this.setState({[event.target.id]:event.target.value})
+        this.setState({[event.target.id]: event.target.value})
     };
-    handleOnSubmit (event){
+    handleOnSubmit = event => {
         event.preventDefault();
-        let json = JSON.stringify({email:this.state.email, password: this.state.password});
-        fetch('https://www.api.fastbuy.by/kiosk/api/v1/auth/login',{
-            method:'POST',
+        let json = JSON.stringify({email: this.state.email, password: this.state.password});
+        fetch('https://www.api.fastbuy.by/kiosk/api/v1/auth/login', {
+            method: 'POST',
             body: json,
             headers: {
                 'Content-type': 'application/json'
             }
-        }).then(response =>{
-            response.ok ? this.setState({isLoading:true,error:false})
-                        : new Promise.reject();
-            this.props.history.push({pathname:'/user/profile'});
-            return  response.json();
-        }).then((data)=>{
+        }).then(response => {
+            response.ok ? this.setState({isLoading: true, error: false})
+                : new Promise.reject();
+            this.props.history.push({pathname: '/v1/kiosks'});
+            return response.json();
+        }).then((data) => {
             console.log(data);
             localStorage.setItem('User', JSON.stringify(data))
-        }).catch(()=>{
-            this.setState({error:true,isLoading:false, email:'',password:''});
+        }).catch(() => {
+            this.setState({error: true, isLoading: false, email: '', password: ''});
         });
-    }
-    render(){
-        return(
+    };
+
+    render() {
+        return (
             <div className='container'>
                 <div className='img_block'>
                     <div className='img_text'>Log-in</div>
                 </div>
                 <Form error={this.state.error}
-                      className = 'main_form'
+                      className='main_form'
                       onSubmit={this.handleOnSubmit}
-                      >
-                    <Form.Field >
+                >
+                    <Form.Field>
                         <Form.Input error={this.state.error}
                                     type='email'
                                     transparent
@@ -61,7 +62,7 @@ export default class LogoPage extends Component{
                                     value={this.state.email}
                                     onChange={this.handleChange}
                                     id='email'
-                                    className='input_Size' />
+                                    className='input_Size'/>
                         <Form.Input error={this.state.error}
                                     transparent
                                     size='big'
@@ -79,11 +80,11 @@ export default class LogoPage extends Component{
                             header='Error'
                             content='The E-mail address or password is incorrect'
                         />
-                    </Form.Field >
+                    </Form.Field>
                     <Form.Button loading={this.state.isLoading}
                                  fluid
                                  color='teal'
-                                 content='Submit' />
+                                 content='Submit'/>
                 </Form>
             </div>
         )
