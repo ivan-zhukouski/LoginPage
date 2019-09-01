@@ -4,22 +4,22 @@ import {Card, Image} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import {NavLink} from "react-router-dom";
 
-const getKiosk = JSON.parse(localStorage.getItem('Kiosks'));
 const url = 'https://www.api.fastbuy.by/kiosk/api/v1/kiosks';
 
 export default class Dashboard extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
-            addressRu:'',
-            addressEn:'',
-            currency:'',
-            title:'',
-            hoursFrom:'',
-            hoursTo:'',
-            loc:'',
+        this.state = {
+            addressRu: '',
+            addressEn: '',
+            currency: '',
+            title: '',
+            hoursFrom: '',
+            hoursTo: '',
+            loc: '',
         }
     }
+
     componentDidMount() {
         fetch(url, {
             method: 'GET',
@@ -28,22 +28,23 @@ export default class Dashboard extends Component {
                 'Content-Type': 'application/json'
             }
         }).then(response => {
-            this.setState({addressRu:`${getKiosk[0].address.ru}`,
-                                addressEn:`${getKiosk[0].address.en}`,
-                                title:`${getKiosk[0].title}`,
-                                hoursFrom:`${getKiosk[0].hours.from}`,
-                                hoursTo:`${getKiosk[0].hours.to}`,
-                                currency:`${getKiosk[0].currency}`});
             console.log(this.state.addressRu);
             return response.json();
         }).then((data) => {
             console.log(data);
-            localStorage.setItem('Kiosks', JSON.stringify(data))
+            this.setState({
+                addressRu: `${data[0].address.ru}`,
+                addressEn: `${data[0].address.en}`,
+                title: `${data[0].title}`,
+                hoursFrom: `${data[0].hours.from}`,
+                hoursTo: `${data[0].hours.to}`,
+                currency: `${data[0].currency}`
+            });
         }).catch(error => {
             console.log(error);
         });
-        console.log(getKiosk);
     }
+
     render() {
         return (
             <div className='container'>
@@ -62,7 +63,9 @@ export default class Dashboard extends Component {
                                 <Card.Content>
                                     <Card.Header>{this.state.title}</Card.Header>
                                     <Card.Description>Адрес:{this.state.addressRu} ({this.state.addressEn})
-                                        <br/> Время работы: {this.state.hoursFrom} - {this.state.hoursTo}<br/>Валюта: {this.state.currency}</Card.Description>
+                                        <br/> Время
+                                        работы: {this.state.hoursFrom} - {this.state.hoursTo}<br/>Валюта: {this.state.currency}
+                                    </Card.Description>
                                 </Card.Content>
                             </Card>
                         </NavLink>
