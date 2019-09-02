@@ -30,7 +30,7 @@ export default class LogoPage extends Component {
         }).then(response => {
             response.ok ? this.setState({isLoading: true, error: false})
                 : new Promise.reject();
-            this.props.history.push({pathname: '/v1/kiosks'});
+            this.props.history.push({pathname: '/dashboard'});
             return response.json();
         }).then((data) => {
             console.log(data);
@@ -42,51 +42,64 @@ export default class LogoPage extends Component {
 
     render() {
         return (
-            <div className='container'>
-                <div className='img_block'>
-                    <div className='img_text'>Log-in</div>
+            <div className='main'>
+                <div className='container_'>
+                    <heaer>
+                        <div className='header_'>
+
+                        </div>
+                    </heaer>
+                    <div className='img_block'>
+                        <div className='img_text'>Log-in</div>
+                    </div>
+                    <Form error={this.state.error}
+                          className='main_form'
+                          onSubmit={this.handleOnSubmit}
+                    >
+                        <Form.Field>
+                            <Form.Input error={this.state.error}
+                                        type='email'
+                                        transparent
+                                        size='big'
+                                        icon='user'
+                                        iconPosition='left'
+                                        placeholder='E-mail'
+                                        name='e-mail'
+                                        value={this.state.email}
+                                        onChange={this.handleChange}
+                                        id='email'
+                                        className='input_Size'/>
+                            <Form.Input error={this.state.error}
+                                        transparent
+                                        size='big'
+                                        icon='lock'
+                                        iconPosition='left'
+                                        placeholder='Password'
+                                        type='password'
+                                        name='password'
+                                        value={this.state.password}
+                                        onChange={this.handleChange}
+                                        id='password'
+                                        className='input_Size'/>
+                            <Message
+                                error
+                                header='Error'
+                                content='The E-mail address or password is incorrect'
+                            />
+                        </Form.Field>
+                        <Form.Button loading={this.state.isLoading}
+                                     fluid
+                                     color='teal'
+                                     content='Submit'/>
+                    </Form>
+                    <footer className='footer'>
+                        <div>
+
+                        </div>
+                    </footer>
                 </div>
-                <Form error={this.state.error}
-                      className='main_form'
-                      onSubmit={this.handleOnSubmit}
-                >
-                    <Form.Field>
-                        <Form.Input error={this.state.error}
-                                    type='email'
-                                    transparent
-                                    size='big'
-                                    icon='user'
-                                    iconPosition='left'
-                                    placeholder='E-mail'
-                                    name='e-mail'
-                                    value={this.state.email}
-                                    onChange={this.handleChange}
-                                    id='email'
-                                    className='input_Size'/>
-                        <Form.Input error={this.state.error}
-                                    transparent
-                                    size='big'
-                                    icon='lock'
-                                    iconPosition='left'
-                                    placeholder='Password'
-                                    type='password'
-                                    name='password'
-                                    value={this.state.password}
-                                    onChange={this.handleChange}
-                                    id='password'
-                                    className='input_Size'/>
-                        <Message
-                            error
-                            header='Error'
-                            content='The E-mail address or password is incorrect'
-                        />
-                    </Form.Field>
-                    <Form.Button loading={this.state.isLoading}
-                                 fluid
-                                 color='teal'
-                                 content='Submit'/>
-                </Form>
             </div>
+
         )
     }
 }

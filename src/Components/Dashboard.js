@@ -5,7 +5,6 @@ import 'semantic-ui-css/semantic.min.css'
 import {NavLink} from "react-router-dom";
 
 const url = 'https://www.api.fastbuy.by/kiosk/api/v1/kiosks';
-
 export default class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -17,6 +16,7 @@ export default class Dashboard extends Component {
             hoursFrom: '',
             hoursTo: '',
             loc: '',
+            id:'',
         }
     }
 
@@ -28,7 +28,6 @@ export default class Dashboard extends Component {
                 'Content-Type': 'application/json'
             }
         }).then(response => {
-            console.log(this.state.addressRu);
             return response.json();
         }).then((data) => {
             console.log(data);
@@ -38,24 +37,30 @@ export default class Dashboard extends Component {
                 title: `${data[0].title}`,
                 hoursFrom: `${data[0].hours.from}`,
                 hoursTo: `${data[0].hours.to}`,
-                currency: `${data[0].currency}`
+                currency: `${data[0].currency}`,
+                id:`${data[0].id}`,
             });
+
+            console.log(this.state.id);
         }).catch(error => {
             console.log(error);
         });
     }
-
+    handleOnclick = ()=>{
+      const newUrl = url + '/' + this.state.id;
+      console.log(newUrl);
+    };
     render() {
         return (
-            <div className='container'>
+            <div className='container_'>
                 <header>
                     <h1>Fastbuy.by</h1>
                 </header>
                 <div className='kiosk_cards'>
                     <div className='card'>
                         <NavLink to={{
-                            pathname: '/kiosks/kiosk'
-                        }}>
+                            pathname: '/kiosks/' + this.state.id,
+                        }} onClick={this.handleOnclick} >
                             <Card>
                                 <Image
                                     src="https://sc01.alicdn.com/kf/HTB1.5nJSpXXXXbhapXXq6xXFXXXX/Professional-Beverage-kiosk-design-Bubble-Tea-Showcase.jpg_350x350.jpg"
