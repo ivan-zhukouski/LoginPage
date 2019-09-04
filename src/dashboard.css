@@ -7,7 +7,16 @@ body{
 }
 .kiosk_cards{
     display: flex;
-    justify-content: center;
+    justify-content: start;
+}
+.img_size{
+    width: 150px;
+    height: 130px;
+}
+.description_size{
+    width: 150px;
+    height: 110px;
+    padding-left: 5px;
 }
 h1{
     text-align: center;
@@ -15,10 +24,16 @@ h1{
 .card {
     margin:15px;
 }
+
+.card_ {
+    width: 150px;
+    margin: 15px;
+}
 .d_flex{
     display: flex;
     justify-content: center;
-    flex-flow: wrap;
+   flex-flow: wrap;
+
 }
 @media screen and (max-width: 768px){
     .kiosk_cards{

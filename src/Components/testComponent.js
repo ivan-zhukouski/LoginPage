@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { Card,Image } from 'semantic-ui-react'
+import {Card, Image} from 'semantic-ui-react'
+import Button from '@material-ui/core/Button'
 
 function TabPanel(props) {
-    const { children, value, index, ...other } = props;
+    const {children, value, index, ...other} = props;
 
     return (
         <Typography
@@ -74,38 +75,57 @@ export default function VerticalTabs() {
             </Tabs>
             <TabPanel value={value} index={0}>
                 <div className='cards_size d_flex'>
-                    <Card className='cards_size'>
-                        <Image src="https://easymeal-app.s3.amazonaws.com/products/dessert1.jpg" wrapped ui = {false} />
-                        <Card.Content>
-                            <Card.Header>Панна-кота с клубникой</Card.Header>
-                            <Card.Description>123
-                            </Card.Description>
-                        </Card.Content>
-                    </Card>
-                    <Card className='cards_size'>
-                        <Image src="https://easymeal-app.s3.amazonaws.com/products/dessert1.jpg" wrapped ui = {false} />
-                        <Card.Content>
-                            <Card.Header>Панна-кота с клубникой</Card.Header>
-                            <Card.Description>123
-                            </Card.Description>
-                        </Card.Content>
-                    </Card>
-                    <Card className='cards_size'>
-                        <Image src="https://easymeal-app.s3.amazonaws.com/products/dessert1.jpg" wrapped ui = {false} />
-                        <Card.Content>
-                            <Card.Header>Панна-кота с клубникой</Card.Header>
-                            <Card.Description>123
-                            </Card.Description>
-                        </Card.Content>
-                    </Card>
-                    <Card className='cards_size'>
-                        <Image src="https://easymeal-app.s3.amazonaws.com/products/dessert1.jpg" wrapped ui = {false} />
-                        <Card.Content>
-                            <Card.Header>Панна-кота с клубникой</Card.Header>
-                            <Card.Description>123
-                            </Card.Description>
-                        </Card.Content>
-                    </Card>
+                    <div className='card_'>
+                        <Card>
+                            <img className='img_size' src="https://easymeal-app.s3.amazonaws.com/products/dessert1.jpg" />
+                            <div className='description_size'>
+                                <h3>Панна-котта с клубникой</h3>
+                            </div>
+                            <span>Цена: 1,22</span>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                Добавить в корзину
+                            </Button>
+                        </Card>
+                    </div>
+                    <div className='card_'>
+                        <Card>
+                            <img className='img_size'
+                                   src="https://easymeal-app.s3.amazonaws.com/products/dessert2.jpg" />
+                            <div className='description_size'>
+                                <h3>Пудинг с семенами чиа, бананом и клубникой</h3>
+                            </div>
+                            <span>Цена: 2,99</span>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                Добавить в корзину
+                            </Button>
+                        </Card>
+                    </div>
+                    <div className='card_'>
+                        <Card>
+                            <img className='img_size'
+                                 src="https://easymeal-app.s3.amazonaws.com/products/dessert3.jpg" />
+                            <div className='description_size'>
+                                <h3>Пудинг с семенами чиа и персиком</h3>
+                            </div>
+                            <span>Цена: 2,99</span>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                Добавить в корзину
+                            </Button>
+                        </Card>
+                    </div>
+                    <div className='card_'>
+                        <Card>
+                            <img className='img_size'
+                                 src="https://easymeal-app.s3.amazonaws.com/products/dessert4.jpg" />
+                            <div className='description_size'>
+                                <h3>Творожный крем с клубникой</h3>
+                            </div>
+                            <span>Цена: 2,99</span>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                Добавить в корзину
+                            </Button>
+                        </Card>
+                    </div>
                 </div>
             </TabPanel>
             <TabPanel value={value} index={1}>
