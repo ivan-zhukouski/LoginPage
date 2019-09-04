@@ -28,7 +28,7 @@ export default class LogoPage extends Component {
                 'Content-type': 'application/json'
             }
         }).then(response => {
-            response.ok ? this.setState({isLoading: true, error: false})
+            response.ok ? this.setState({isLoading: false, error: false})
                 : new Promise.reject();
             this.props.history.push({pathname: '/dashboard'});
             return response.json();
@@ -39,7 +39,9 @@ export default class LogoPage extends Component {
             this.setState({error: true, isLoading: false, email: '', password: ''});
         });
     };
-
+handleOnClick = ()=>{
+  this.setState({isLoading:true})
+};
     render() {
         return (
             <div className='main'>
@@ -90,7 +92,7 @@ export default class LogoPage extends Component {
                         <Form.Button loading={this.state.isLoading}
                                      fluid
                                      color='teal'
-                                     content='Submit'/>
+                                     content='Submit' onClick={this.handleOnClick} />
                     </Form>
                     <footer className='footer'>
                         <div>

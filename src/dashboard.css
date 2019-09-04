@@ -15,11 +15,23 @@ h1{
 .card {
     margin:15px;
 }
+.d_flex{
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+}
 @media screen and (max-width: 768px){
     .kiosk_cards{
         flex-flow: wrap;
     }
+    .cards_size {
+        height: 100%;
+        width: 250px;
+    }
 }
 @media screen and (max-width: 550px){
-
+    .cards_size {
+        height: 100%;
+        width: 200px;
+    }
 }
