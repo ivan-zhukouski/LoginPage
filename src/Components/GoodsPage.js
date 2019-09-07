@@ -129,7 +129,60 @@ export default function VerticalTabs() {
                 </div>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Item Two
+                <div className='cards_size d_flex'>
+                    <div className='card_'>
+                        <Card>
+                            <img className='img_size' src="https://easymeal-app.s3.amazonaws.com/products/lemonade1.jpg" />
+                            <div className='description_size'>
+                                <h3>Имбирный лимонад (300мл)</h3>
+                            </div>
+                            <span>Цена: 1,99</span>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                Добавить в корзину
+                            </Button>
+                        </Card>
+                    </div>
+                    <div className='card_'>
+                        <Card>
+                            <img className='img_size'
+                                 src="https://easymeal-app.s3.amazonaws.com/products/lemonade2.jpg" />
+                            <div className='description_size'>
+                                <h3>Абрикосовый лимонад(300мл)
+                                </h3>
+                            </div>
+                            <span>Цена: 1,99</span>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                Добавить в корзину
+                            </Button>
+                        </Card>
+                    </div>
+                    <div className='card_'>
+                        <Card>
+                            <img className='img_size'
+                                 src="https://easymeal-app.s3.amazonaws.com/products/lemonade1.jpg" />
+                            <div className='description_size'>
+                                <h3>Имбирный лимонад(300мл)</h3>
+                            </div>
+                            <span>Цена: 2,49</span>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                Добавить в корзину
+                            </Button>
+                        </Card>
+                    </div>
+                    <div className='card_'>
+                        <Card>
+                            <img className='img_size'
+                                 src="https://easymeal-app.s3.amazonaws.com/products/lemonade3.jpg" />
+                            <div className='description_size'>
+                                <h5>Лимонад на основе березового сока с клубникой и мятой(330мл)</h5>
+                            </div>
+                            <span>Цена: 1,15</span>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                Добавить в корзину
+                            </Button>
+                        </Card>
+                    </div>
+                </div>
             </TabPanel>
             <TabPanel value={value} index={2}>
                 Item Three

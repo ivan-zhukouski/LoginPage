@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import 'semantic-ui-css/semantic.min.css'
-import VerticalTabs from "./testComponent";
+import VerticalTabs from "./GoodsPage";
 
 const url = 'https://www.api.fastbuy.by/kiosk/api/v1/kiosks/5d372f320d2567534c1ba603';
 export default class KioskPage extends Component {
