@@ -5,7 +5,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import {Card, Image} from 'semantic-ui-react'
+import {Card} from 'semantic-ui-react'
 import Button from '@material-ui/core/Button'
 
 function TabPanel(props) {
@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function VerticalTabs() {
+export default function VerticalTabs(props) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -67,6 +67,7 @@ export default function VerticalTabs() {
                 onChange={handleChange}
                 aria-label="Vertical tabs example"
                 className={classes.tabs}
+
             >
                 <Tab label="Десерты" {...a11yProps(0)} />
                 <Tab label="Лимонады" {...a11yProps(1)} />
@@ -77,11 +78,12 @@ export default function VerticalTabs() {
                 <div className='cards_size d_flex'>
                     <div className='card_'>
                         <Card>
-                            <img className='img_size' src="https://easymeal-app.s3.amazonaws.com/products/dessert1.jpg" />
+                            <img className='img_size' src="https://easymeal-app.s3.amazonaws.com/products/dessert1.jpg"
+                                 alt=''/>
                             <div className='description_size'>
-                                <h3>Панна-котта с клубникой</h3>
+                                <h3>{props.nameDessertFirst}</h3>
                             </div>
-                            <span>Цена: 1,22</span>
+                            <span>Цена:{props.priceDessertFirst}</span>
                             <Button variant="contained" color="primary" className={classes.button}>
                                 Добавить в корзину
                             </Button>
@@ -90,11 +92,11 @@ export default function VerticalTabs() {
                     <div className='card_'>
                         <Card>
                             <img className='img_size'
-                                   src="https://easymeal-app.s3.amazonaws.com/products/dessert2.jpg" />
+                                 src="https://easymeal-app.s3.amazonaws.com/products/dessert2.jpg" alt=''/>
                             <div className='description_size'>
-                                <h3>Пудинг с семенами чиа, бананом и клубникой</h3>
+                                <h3>{props.nameDessertSecond}</h3>
                             </div>
-                            <span>Цена: 2,99</span>
+                            <span>Цена:{props.priceDessertSecond}</span>
                             <Button variant="contained" color="primary" className={classes.button}>
                                 Добавить в корзину
                             </Button>
@@ -103,11 +105,11 @@ export default function VerticalTabs() {
                     <div className='card_'>
                         <Card>
                             <img className='img_size'
-                                 src="https://easymeal-app.s3.amazonaws.com/products/dessert3.jpg" />
+                                 src="https://easymeal-app.s3.amazonaws.com/products/dessert3.jpg" alt=''/>
                             <div className='description_size'>
-                                <h3>Пудинг с семенами чиа и персиком</h3>
+                                <h3>{props.nameDessertThird}</h3>
                             </div>
-                            <span>Цена: 2,99</span>
+                            <span>Цена: {props.priceDessertThird}</span>
                             <Button variant="contained" color="primary" className={classes.button}>
                                 Добавить в корзину
                             </Button>
@@ -116,11 +118,11 @@ export default function VerticalTabs() {
                     <div className='card_'>
                         <Card>
                             <img className='img_size'
-                                 src="https://easymeal-app.s3.amazonaws.com/products/dessert4.jpg" />
+                                 src="https://easymeal-app.s3.amazonaws.com/products/dessert4.jpg" alt=''/>
                             <div className='description_size'>
-                                <h3>Творожный крем с клубникой</h3>
+                                <h3>{props.nameDessertFourth}</h3>
                             </div>
-                            <span>Цена: 2,99</span>
+                            <span>Цена: {props.priceDessertFourth}</span>
                             <Button variant="contained" color="primary" className={classes.button}>
                                 Добавить в корзину
                             </Button>
@@ -132,7 +134,8 @@ export default function VerticalTabs() {
                 <div className='cards_size d_flex'>
                     <div className='card_'>
                         <Card>
-                            <img className='img_size' src="https://easymeal-app.s3.amazonaws.com/products/lemonade1.jpg" />
+                            <img className='img_size' src="https://easymeal-app.s3.amazonaws.com/products/lemonade1.jpg"
+                                 alt=''/>
                             <div className='description_size'>
                                 <h3>Имбирный лимонад (300мл)</h3>
                             </div>
@@ -145,7 +148,7 @@ export default function VerticalTabs() {
                     <div className='card_'>
                         <Card>
                             <img className='img_size'
-                                 src="https://easymeal-app.s3.amazonaws.com/products/lemonade2.jpg" />
+                                 src="https://easymeal-app.s3.amazonaws.com/products/lemonade2.jpg" alt=''/>
                             <div className='description_size'>
                                 <h3>Абрикосовый лимонад(300мл)
                                 </h3>
@@ -159,7 +162,7 @@ export default function VerticalTabs() {
                     <div className='card_'>
                         <Card>
                             <img className='img_size'
-                                 src="https://easymeal-app.s3.amazonaws.com/products/lemonade1.jpg" />
+                                 src="https://easymeal-app.s3.amazonaws.com/products/lemonade1.jpg" alt=''/>
                             <div className='description_size'>
                                 <h3>Имбирный лимонад(300мл)</h3>
                             </div>
@@ -172,7 +175,7 @@ export default function VerticalTabs() {
                     <div className='card_'>
                         <Card>
                             <img className='img_size'
-                                 src="https://easymeal-app.s3.amazonaws.com/products/lemonade3.jpg" />
+                                 src="https://easymeal-app.s3.amazonaws.com/products/lemonade3.jpg" alt=''/>
                             <div className='description_size'>
                                 <h5>Лимонад на основе березового сока с клубникой и мятой(330мл)</h5>
                             </div>

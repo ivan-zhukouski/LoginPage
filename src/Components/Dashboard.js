@@ -19,7 +19,6 @@ export default class Dashboard extends Component {
             id:'',
         }
     }
-
     componentDidMount() {
         fetch(url, {
             method: 'GET',
