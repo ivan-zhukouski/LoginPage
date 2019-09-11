@@ -137,9 +137,10 @@ export default function VerticalTabs(props) {
                             <img className='img_size' src="https://easymeal-app.s3.amazonaws.com/products/lemonade1.jpg"
                                  alt=''/>
                             <div className='description_size'>
-                                <h3>Имбирный лимонад (300мл)</h3>
+                                <h3>{props.nameBeverageFirst}</h3>
+                                <span>{props.volumeFirst}</span>
                             </div>
-                            <span>Цена: 1,99</span>
+                            <span>Цена: {props.priceBeverageFirst}</span>
                             <Button variant="contained" color="primary" className={classes.button}>
                                 Добавить в корзину
                             </Button>
@@ -150,10 +151,10 @@ export default function VerticalTabs(props) {
                             <img className='img_size'
                                  src="https://easymeal-app.s3.amazonaws.com/products/lemonade2.jpg" alt=''/>
                             <div className='description_size'>
-                                <h3>Абрикосовый лимонад(300мл)
-                                </h3>
+                                <h3>{props.nameBeverageSecond}</h3>
+                                <span style={{fontSize: '10px'}}>{props.volumeSecond}</span>
                             </div>
-                            <span>Цена: 1,99</span>
+                            <span>Цена: {props.priceBeverageSecond}</span>
                             <Button variant="contained" color="primary" className={classes.button}>
                                 Добавить в корзину
                             </Button>
@@ -164,9 +165,10 @@ export default function VerticalTabs(props) {
                             <img className='img_size'
                                  src="https://easymeal-app.s3.amazonaws.com/products/lemonade1.jpg" alt=''/>
                             <div className='description_size'>
-                                <h3>Имбирный лимонад(300мл)</h3>
+                                <h3>{props.nameBeverageThird}</h3>
+                                <span>{props.volumeThird}</span>
                             </div>
-                            <span>Цена: 2,49</span>
+                            <span>Цена: {props.priceBeverageThird}</span>
                             <Button variant="contained" color="primary" className={classes.button}>
                                 Добавить в корзину
                             </Button>
@@ -177,9 +179,10 @@ export default function VerticalTabs(props) {
                             <img className='img_size'
                                  src="https://easymeal-app.s3.amazonaws.com/products/lemonade3.jpg" alt=''/>
                             <div className='description_size'>
-                                <h5>Лимонад на основе березового сока с клубникой и мятой(330мл)</h5>
+                                <h5>{props.nameBeverageFourth}</h5>
+                                <span>{props.volumeFourth}</span>
                             </div>
-                            <span>Цена: 1,15</span>
+                            <span>Цена: {props.priceBeverageFourth}</span>
                             <Button variant="contained" color="primary" className={classes.button}>
                                 Добавить в корзину
                             </Button>
@@ -188,10 +191,107 @@ export default function VerticalTabs(props) {
                 </div>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Item Three
+                <div className='cards_size d_flex'>
+                    <div className='card_'>
+                        <Card>
+                            <img className='img_size' src="https://easymeal-app.s3.amazonaws.com/products/smoothie1.jpg"
+                                 alt=''/>
+                            <div className='description_size'>
+                                <h5>{props.nameSmoothieFirst}</h5>
+                                <span>{props.volumeSmoothieFirst}</span>
+                            </div>
+                            <span>Цена: {props.priceSmoothieFirst}</span>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                Добавить в корзину
+                            </Button>
+                        </Card>
+                    </div>
+                    <div className='card_'>
+                        <Card>
+                            <img className='img_size'
+                                 src="https://easymeal-app.s3.amazonaws.com/products/smoothie2.jpg" alt=''/>
+                            <div className='description_size'>
+                                <h5>{props.nameSmoothieSecond}</h5>
+                                <span style={{fontSize: '10px'}}>{props.volumeSmoothieSecond}</span>
+                            </div>
+                            <span>Цена: {props.priceSmoothieSecond}</span>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                Добавить в корзину
+                            </Button>
+                        </Card>
+                    </div>
+                    <div className='card_'>
+                        <Card>
+                            <img className='img_size'
+                                 src="https://easymeal-app.s3.amazonaws.com/products/smoothie3.jpg" alt=''/>
+                            <div className='description_size'>
+                                <h5>{props.nameSmoothieThird}</h5>
+                                <span>{props.volumeSmoothieThird}</span>
+                            </div>
+                            <span>Цена: {props.priceSmoothieThird}</span>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                Добавить в корзину
+                            </Button>
+                        </Card>
+                    </div>
+                </div>
             </TabPanel>
             <TabPanel value={value} index={3}>
-                Item Four
+                <div className='cards_size d_flex'>
+                    <div className='card_'>
+                        <Card>
+                            <img className='img_size' src="https://easymeal-app.s3.amazonaws.com/products/sandwich1.jpg"
+                                 alt=''/>
+                            <div className='description_size'>
+                                <h5>{props.nameSandwichFirst}</h5>
+                                <span style={{fontSize: '8px'}}>{props.descriptionSandwichFirst}</span>
+                            </div>
+                            <span>Цена:{props.priceSandwichFirst}</span>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                Добавить в корзину
+                            </Button>
+                        </Card>
+                    </div>
+                    <div className='card_'>
+                        <Card>
+                            <img className='img_size'
+                                 src="https://easymeal-app.s3.amazonaws.com/products/sandwich2.jpg" alt=''/>
+                            <div className='description_size'>
+                                <h5>{props.nameSandwichSecond}</h5>
+                            </div>
+                            <span>Цена:{props.priceSandwichSecond}</span>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                Добавить в корзину
+                            </Button>
+                        </Card>
+                    </div>
+                    <div className='card_'>
+                        <Card>
+                            <img className='img_size'
+                                 src="https://easymeal-app.s3.amazonaws.com/products/sandwich3.jpg" alt=''/>
+                            <div className='description_size'>
+                                <h5>{props.nameSandwichThird}</h5>
+                            </div>
+                            <span>Цена: {props.priceSandwichThird}</span>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                Добавить в корзину
+                            </Button>
+                        </Card>
+                    </div>
+                    <div className='card_'>
+                        <Card>
+                            <img className='img_size'
+                                 src="https://easymeal-app.s3.amazonaws.com/products/sandwich4.jpg" alt=''/>
+                            <div className='description_size'>
+                                <h5>{props.nameSandwichFourth}</h5>
+                            </div>
+                            <span>Цена: {props.priceSandwichFourth}</span>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                Добавить в корзину
+                            </Button>
+                        </Card>
+                    </div>
+                </div>
             </TabPanel>
         </div>
     );

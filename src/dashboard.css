@@ -17,6 +17,10 @@ body{
     width: 150px;
     height: 110px;
     padding-left: 5px;
+    margin: 0;
+}
+h3,h5{
+    margin: 0;
 }
 h1{
     text-align: center;
