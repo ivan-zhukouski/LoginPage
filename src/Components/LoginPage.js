@@ -30,7 +30,7 @@ export default class LogoPage extends Component {
         }).then(response => {
             response.ok ? this.setState({isLoading: false, error: false})
                 : new Promise.reject();
-            this.props.history.push({pathname: '/dashboard'});
+            this.props.history.push({pathname: '/'});
             return response.json();
         }).then((data) => {
             console.log(data);
@@ -46,11 +46,11 @@ handleOnClick = ()=>{
         return (
             <div className='main'>
                 <div className='container_'>
-                    <heaer>
+                    <header>
                         <div className='header_'>
 
                         </div>
-                    </heaer>
+                    </header>
                     <div className='img_block'>
                         <div className='img_text'>Log-in</div>
                     </div>

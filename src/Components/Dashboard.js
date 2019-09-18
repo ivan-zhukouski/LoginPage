@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import '../dashboard.css'
-import {Card, Image} from 'semantic-ui-react'
+import {Card, Image, Button,Icon} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import {NavLink} from "react-router-dom";
 
@@ -45,21 +45,25 @@ export default class Dashboard extends Component {
             console.log(error);
         });
     }
-    handleOnclick = ()=>{
-      const newUrl = url + '/' + this.state.id;
-      console.log(newUrl);
+    handleLogout = ()=>{
+        localStorage.removeItem('User');
+        this.props.history.push({pathname: '/login'});
     };
     render() {
+        const newUrl = this.state.id;
         return (
             <div className='container_'>
                 <header>
                     <h1>Fastbuy.by</h1>
+                    <Button floated='right' icon labelPosition='left' onClick={this.handleLogout}>
+                        <Icon name='sign-out' />
+                       Logout</Button>
                 </header>
                 <div className='kiosk_cards'>
                     <div className='card'>
                         <NavLink to={{
                             pathname: '/kiosks/' + this.state.id,
-                        }} onClick={this.handleOnclick} >
+                        }} >
                             <Card>
                                 <Image
                                     src="https://sc01.alicdn.com/kf/HTB1.5nJSpXXXXbhapXXq6xXFXXXX/Professional-Beverage-kiosk-design-Bubble-Tea-Showcase.jpg_350x350.jpg"
