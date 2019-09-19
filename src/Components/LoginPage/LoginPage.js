@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Form, Message} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
-import '../form.css'
+import '../../form.css'
 
 export default class LogoPage extends Component {
     constructor(props) {

@@ -3,6 +3,7 @@ import '../dashboard.css'
 import {Card, Image, Button,Icon} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import {NavLink} from "react-router-dom";
+import TextFields from './LoginPage/NewLoginPage'
 
 const url = 'https://www.api.fastbuy.by/kiosk/api/v1/kiosks';
 export default class Dashboard extends Component {
@@ -39,7 +40,6 @@ export default class Dashboard extends Component {
                 currency: `${data[0].currency}`,
                 id:`${data[0].id}`,
             });
-
             console.log(this.state.id);
         }).catch(error => {
             console.log(error);
@@ -50,7 +50,6 @@ export default class Dashboard extends Component {
         this.props.history.push({pathname: '/login'});
     };
     render() {
-        const newUrl = this.state.id;
         return (
             <div className='container_'>
                 <header>
@@ -79,6 +78,7 @@ export default class Dashboard extends Component {
                         </NavLink>
                     </div>
                 </div>
+                <TextFields/>
             </div>
         )
     }

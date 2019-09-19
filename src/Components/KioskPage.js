@@ -7,12 +7,8 @@ export default class KioskPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            nameDessertFirst: '', //как лучше?, подробно описывать стейт или через массив
-            nameDessertSecond: '',
-            nameDessert: ['', '',],
-            priceDessertFirst: '',
-            priceDessertSecond: '',
-            priceDessert: ['', ''],
+            nameDessert: ['','','',''],
+            priceDessert: ['', '','',''],
             nameBeverage: ['', '', '', ''],
             priceBeverage: ['', '', '', ''],
             volumeBeverage: ['', '', '', ''],
@@ -32,7 +28,6 @@ export default class KioskPage extends Component {
             countSandwichesAll: '',
         }
     }
-
     componentDidMount() {
         fetch(url, {
             method: 'GET',
@@ -45,12 +40,8 @@ export default class KioskPage extends Component {
         }).then(data => {
             console.log(data);
             this.setState({
-                nameDessertFirst: `${data.items[0].products[0].title}`,
-                priceDessertFirst: `${data.items[0].products[0].price}`,
-                nameDessertSecond: `${data.items[0].products[1].title}`,
-                priceDessertSecond: `${data.items[0].products[1].price}`,
-                nameDessert: [`${data.items[0].products[2].title}`, `${data.items[0].products[3].title}`],
-                priceDessert: [`${data.items[0].products[2].price}`, `${data.items[0].products[3].price}`],
+                nameDessert: [`${data.items[0].products[0].title}`,`${data.items[0].products[1].title}`,`${data.items[0].products[2].title}`, `${data.items[0].products[3].title}`],
+                priceDessert: [`${data.items[0].products[0].price}`,`${data.items[0].products[1].price}`,`${data.items[0].products[2].price}`, `${data.items[0].products[3].price}`],
                 nameBeverage: [`${data.items[1].products[0].title}`, `${data.items[1].products[1].title}`, `${data.items[1].products[2].title}`, `${data.items[1].products[3].title}`],
                 volumeBeverage: [`${data.items[1].products[0].description}`, `${data.items[1].products[1].description}`, `${data.items[1].products[2].description}`, `${data.items[1].products[3].description}`],
                 priceBeverage: [`${data.items[1].products[0].price}`, `${data.items[1].products[1].price}`, `${data.items[1].products[2].price}`, `${data.items[1].products[3].price}`],
@@ -92,14 +83,14 @@ export default class KioskPage extends Component {
     }
 
     render() {
-        const nameDessertFirst = this.state.nameDessertFirst;
-        const nameDessertSecond = this.state.nameDessertSecond;
-        const nameDessertThird = this.state.nameDessert[0];
-        const nameDessertFourth = this.state.nameDessert[1];
-        const priceDessertFirst = this.state.priceDessertFirst;
-        const priceDessertSecond = this.state.priceDessertSecond;
-        const priceDessertThird = this.state.priceDessert[0];
-        const priceDessertFourth = this.state.priceDessert[1];
+        const nameDessertFirst = this.state.nameDessert[0];
+        const nameDessertSecond = this.state.nameDessert[1];
+        const nameDessertThird = this.state.nameDessert[2];
+        const nameDessertFourth = this.state.nameDessert[3];
+        const priceDessertFirst = this.state.priceDessert[0];
+        const priceDessertSecond = this.state.priceDessert[1];
+        const priceDessertThird = this.state.priceDessert[2];
+        const priceDessertFourth = this.state.priceDessert[3];
         const nameBeverageFirst = this.state.nameBeverage[0];
         const nameBeverageSecond = this.state.nameBeverage[1];
         const nameBeverageThird = this.state.nameBeverage[2];
