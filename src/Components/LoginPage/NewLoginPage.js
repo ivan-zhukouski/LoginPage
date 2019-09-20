@@ -23,8 +23,6 @@ export default class LogoPage extends Component {
         this.state = {
             errorNone: {
                 display:'none',
-                color:'red',
-                fontSize:'15px',
             },
             iconError:'',
             email: '',
@@ -54,14 +52,14 @@ export default class LogoPage extends Component {
             console.log(data);
             localStorage.setItem('User', JSON.stringify(data))
         }).catch(() => {
-            this.setState({error: true, email: '', password: ''});
+            this.setState({error: true, email: '', password: '', errorNone:{display:'block',color:'red',fontSize:'15px'}});
         });
     };
     render() {
         return (
             <div>
                 <div style={container} autoComplete="on">
-                    <h1 style={{marginTop: '50px', color: 'blue'}}>EasyMeal</h1>
+                    <h1 style={{marginTop: '100px', color: 'blue'}}>EasyMeal</h1>
                     <form className='form'>
                         <div >
                             <Grid container spacing={1} alignItems="flex-end">
@@ -99,7 +97,11 @@ export default class LogoPage extends Component {
                                     </TextField>
                                 </Grid>
                             </Grid>
-                            <FormHelperText style={this.state.errorNone} id="component-error-text">The E-mail address or password is incorrect</FormHelperText>
+                            <FormHelperText
+                                            style={this.state.errorNone}
+                                            id="component-error-text">
+                                The E-mail address or password is incorrect
+                            </FormHelperText>
                         </div>
                         <div style={{display: 'flex', justifyContent: 'center', marginTop: '15px'}}>
                             <Button
