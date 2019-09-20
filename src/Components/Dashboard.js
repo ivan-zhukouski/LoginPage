@@ -3,7 +3,6 @@ import '../dashboard.css'
 import {Card, Image, Button,Icon} from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import {NavLink} from "react-router-dom";
-import TextFields from './LoginPage/NewLoginPage'
 
 const url = 'https://www.api.fastbuy.by/kiosk/api/v1/kiosks';
 export default class Dashboard extends Component {
@@ -78,7 +77,6 @@ export default class Dashboard extends Component {
                         </NavLink>
                     </div>
                 </div>
-                <TextFields/>
             </div>
         )
     }

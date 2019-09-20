@@ -1,94 +1,120 @@
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {Component} from 'react';
 import TextField from '@material-ui/core/TextField';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import PersonIcon from '@material-ui/icons/Person';
+import LockIcon from '@material-ui/icons/Lock';
+import './LoginPage.css'
+import FormHelperText from '@material-ui/core/FormHelperText';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-const useStyles = makeStyles(theme => ({
-    container: {
-        maxWidth:960,
-        margin:'auto',
-        border:'1px solid black',
-        marginTop:50,
-        height:500,
-        marginBottom:50,
-    },
-    form:{
-        display:'flex',
-        justifyContent:'center',
-        flexFlow:'column',
-        width:350,
-        backgroundColor:'#fff',
-        margin:'auto',
-        border:'1px solid black',
-        padding:10,
-    },
-    textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: 300,
-        padding:10,
+const container = {
+    maxWidth: 960,
+    margin: 'auto',
+    border: '1px solid black',
+    marginTop: 50,
+    height: 500,
+    marginBottom: 50,
+};
 
-    },
-    margin: {
-        margin: theme.spacing(1),
-    },
-    dense: {
-        marginTop: 19,
-    },
-    color:{
-        color:'#fff',
-    },
-    menu: {
-        width: 200,
-    },
-}));
-
-export default function TextFields() {
-    const classes = useStyles();
-
-    return (
-        <form className={classes.container} noValidate autoComplete="off">
-            <h1 style={{marginTop:50, color:'blue', }}>EasyMeal</h1>
-            <div className={classes.form}>
-                <div className={classes.margin}>
-                    <Grid container spacing={1} alignItems="flex-end">
-                        <Grid item>
-                            <AccountCircle />
-                        </Grid>
-                        <Grid item>
-                            <TextField id="input-with-icon-grid" label="With a grid" />
-                        </Grid>
-                    </Grid>
+export default class LogoPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            errorNone: {
+                display:'none',
+                color:'red',
+                fontSize:'15px',
+            },
+            iconError:'',
+            email: '',
+            password: '',
+            isLoading: false,
+            error: false,
+        };
+    }
+    handleChange = event => {
+        this.setState({[event.target.id]: event.target.value})
+    };
+    handleOnClick = event => {
+        event.preventDefault();
+        let json = JSON.stringify({email: this.state.email, password: this.state.password});
+        fetch('https://www.api.fastbuy.by/kiosk/api/v1/auth/login', {
+            method: 'POST',
+            body: json,
+            headers: {
+                'Content-type': 'application/json'
+            }
+        }).then(response => {
+            response.ok ? this.setState({error: false})
+                : new Promise.reject();
+            this.props.history.push({pathname: '/'});
+            return response.json();
+        }).then((data) => {
+            console.log(data);
+            localStorage.setItem('User', JSON.stringify(data))
+        }).catch(() => {
+            this.setState({error: true, email: '', password: ''});
+        });
+    };
+    render() {
+        return (
+            <div>
+                <div style={container} autoComplete="on">
+                    <h1 style={{marginTop: '50px', color: 'blue'}}>EasyMeal</h1>
+                    <form className='form'>
+                        <div >
+                            <Grid container spacing={1} alignItems="flex-end">
+                                <Grid item>
+                                    <PersonIcon color={this.state.iconError} fontSize="large"/>
+                                </Grid>
+                                <Grid item>
+                                    <TextField error={this.state.error}
+                                               id="email"
+                                               label="E-mail"
+                                               type='email'
+                                               className='textField'
+                                               value={this.state.email}
+                                               onChange={this.handleChange}
+                                    />
+                                </Grid>
+                            </Grid>
+                        </div>
+                        <div>
+                            <Grid container spacing={1} alignItems="flex-end">
+                                <Grid item>
+                                    <LockIcon color={this.state.iconError} fontSize="large"/>
+                                </Grid>
+                                <Grid item>
+                                    <TextField error={this.state.error}
+                                               id="password"
+                                               label="Password"
+                                               type="password"
+                                               autoComplete="current-password"
+                                               margin="normal"
+                                               className='textField'
+                                               value={this.state.password}
+                                               onChange={this.handleChange}
+                                    >
+                                    </TextField>
+                                </Grid>
+                            </Grid>
+                            <FormHelperText style={this.state.errorNone} id="component-error-text">The E-mail address or password is incorrect</FormHelperText>
+                        </div>
+                        <div style={{display: 'flex', justifyContent: 'center', marginTop: '15px'}}>
+                            <Button
+                                style={{width: 30}}
+                                size="medium"
+                                variant="contained"
+                                color="primary"
+                                onClick={this.handleOnClick}
+                            >Login
+                                <CircularProgress size={20}  color="secondary" />
+                            </Button>
+                        </div>
+                    </form>
                 </div>
-
-                <div className={classes.margin}>
-                    <Grid container spacing={1} alignItems="flex-end">
-                        <Grid item>
-                            <AccountCircle />
-                        </Grid>
-                        <Grid item>
-                            <TextField
-                                id="standard-password-input"
-                                label="Password"
-                                type="password"
-                                autoComplete="current-password"
-                                margin="normal"
-
-                            />
-                        </Grid>
-                    </Grid>
-                </div>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.margin}>
-                    Login
-                </Button>
             </div>
-
-        </form>
-    );
+        );
+    }
 }
