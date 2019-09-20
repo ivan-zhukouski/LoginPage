@@ -62,7 +62,7 @@ export default class LogoPage extends Component {
             <div>
                 <div style={container} autoComplete="on">
                     <h1 style={{marginTop: '50px', color: 'blue'}}>EasyMeal</h1>
-                    <form className='form'>
+                    <form onSubmit={this.handleOnSubmit} className='form'>
                         <div >
                             <Grid container spacing={1} alignItems="flex-end">
                                 <Grid item>
