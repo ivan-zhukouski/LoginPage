@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -7,47 +7,63 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import StoreIcon from '@material-ui/icons/Store';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import CategoryIcon from '@material-ui/icons/Category';
-import '../Dashboard/DashBoard.css'
-
+import {NavLink} from "react-router-dom";
 
 export default class NavigationBar extends Component {
-    constructor(props){
-        super(props);
-        this.state={
+    render() {
+        return (
+            <div style={{
+                height: '100vh',
+                width: '100%',
+                maxWidth: '200px',
+                borderRight: '1px solid #e5f0f2'
+            }}>
+                <List component="nav" aria-label="main mailbox folders">
+                    <NavLink exact activeClassName={'name'}
+                             activeStyle={{color: 'red'}}
+                             to={{
+                                 pathname: '/'
+                             }}
 
-        }
-    }
-        render(){
-            return (
-                <div className='root'>
-                    <List component="nav" aria-label="main mailbox folders">
-                        <ListItem className='selected'  style={{borderBottom:'1px solid #e5f0f2'}} button>
+                    >
+                        <ListItem style={{borderBottom: '1px solid #e5f0f2'}} button>
                             <ListItemIcon>
-                                <DashboardIcon />
+                                <DashboardIcon/>
                             </ListItemIcon>
-                            <ListItemText primary="Dashboard" />
+                            <ListItemText primary="Dashboard"/>
                         </ListItem>
-                        <ListItem  className='selected' style={{borderBottom:'1px solid #e5f0f2'}} button>
+                    </NavLink>
+                    <NavLink activeClassName={'name'}
+                             activeStyle={{color: 'red'}} to={{
+                        pathname: '/kiosks/'
+                    }}>
+                        <ListItem style={{borderBottom: '1px solid #e5f0f2'}} button>
                             <ListItemIcon>
-                                <StoreIcon />
+                                <StoreIcon/>
                             </ListItemIcon>
-                            <ListItemText primary="Kiosks" />
+                            <ListItemText primary="Kiosks"/>
                         </ListItem>
-                        <ListItem className='selected'  style={{borderBottom:'1px solid #e5f0f2'}} button>
+                    </NavLink>
+                    <NavLink>
+                        <ListItem style={{borderBottom: '1px solid #e5f0f2'}} button>
                             <ListItemIcon>
-                                <FastfoodIcon />
+                                <FastfoodIcon/>
                             </ListItemIcon>
-                            <ListItemText primary="Products" />
+                            <ListItemText primary="Products"/>
                         </ListItem>
-                        <ListItem className='selected'  style={{borderBottom:'1px solid #e5f0f2'}} button>
+                    </NavLink>
+                    <NavLink>
+                        <ListItem style={{borderBottom: '1px solid #e5f0f2'}} button>
                             <ListItemIcon>
                                 <CategoryIcon/>
                             </ListItemIcon>
-                            <ListItemText primary="Categories" />
+                            <ListItemText primary="Categories"/>
                         </ListItem>
-                    </List>
-                </div>
-            );
-        }
+                    </NavLink>
+
+                </List>
+            </div>
+        );
+    }
 
 }

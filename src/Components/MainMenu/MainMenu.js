@@ -1,6 +1,13 @@
 import React, {Component} from 'react'
-import Header from './Header'
-import MediaCard from '../Dashboard/DashBoardKards.js'
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import {NavLink} from "react-router-dom";
+
 const url = 'https://www.api.fastbuy.by/kiosk/api/v1/kiosks';
 export default class MainMenu extends Component {
     constructor(props) {
@@ -43,13 +50,32 @@ export default class MainMenu extends Component {
     }
     handleLogout = ()=>{
         localStorage.removeItem('User');
-        this.props.history.push({pathname: '/login'});
     };
     render() {
-        const handleLogout = this.handleLogout;
         return (
             <div>
-                <Header handleLogout={handleLogout} />
+                <div style={{flexGrow:'1'}}>
+                    <AppBar position="static">
+                        <Toolbar>
+                            <IconButton edge="start"  color="inherit" aria-label="menu">
+                                <MenuIcon />
+                            </IconButton>
+                            <Typography variant="h6" style={{flexGrow:'1'}}>
+                                EasyMeal
+                            </Typography>
+                            <div style={{display:'flex', justifyContent:'flex-end'}}>
+                                <AccountCircle/>
+                                <p style={{marginRight:'100px'}}>Person</p>
+                            </div>
+                            <NavLink to={{
+                                pathname:'/login'
+                            }}>
+                                <Button style={{color:'white'}} color="inherit" onClick={this.handleLogout} >Logout</Button>
+
+                            </NavLink>
+                        </Toolbar>
+                    </AppBar>
+                </div>
             </div>
         )
     }

@@ -1,14 +1,16 @@
 import React, {Component} from 'react'
 import 'semantic-ui-css/semantic.min.css'
 import VerticalTabs from "./GoodsPage";
+import MainMenu from "./MainMenu/MainMenu";
+import NavigationBar from "./MainMenu/NavigationBar";
 
 const url = 'https://www.api.fastbuy.by/kiosk/api/v1/kiosks/5d372f320d2567534c1ba603';
 export default class KioskPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            nameDessert: ['','','',''],
-            priceDessert: ['', '','',''],
+            nameDessert: ['', '', '', ''],
+            priceDessert: ['', '', '', ''],
             nameBeverage: ['', '', '', ''],
             priceBeverage: ['', '', '', ''],
             volumeBeverage: ['', '', '', ''],
@@ -28,6 +30,7 @@ export default class KioskPage extends Component {
             countSandwichesAll: '',
         }
     }
+
     componentDidMount() {
         fetch(url, {
             method: 'GET',
@@ -40,8 +43,8 @@ export default class KioskPage extends Component {
         }).then(data => {
             console.log(data);
             this.setState({
-                nameDessert: [`${data.items[0].products[0].title}`,`${data.items[0].products[1].title}`,`${data.items[0].products[2].title}`, `${data.items[0].products[3].title}`],
-                priceDessert: [`${data.items[0].products[0].price}`,`${data.items[0].products[1].price}`,`${data.items[0].products[2].price}`, `${data.items[0].products[3].price}`],
+                nameDessert: [`${data.items[0].products[0].title}`, `${data.items[0].products[1].title}`, `${data.items[0].products[2].title}`, `${data.items[0].products[3].title}`],
+                priceDessert: [`${data.items[0].products[0].price}`, `${data.items[0].products[1].price}`, `${data.items[0].products[2].price}`, `${data.items[0].products[3].price}`],
                 nameBeverage: [`${data.items[1].products[0].title}`, `${data.items[1].products[1].title}`, `${data.items[1].products[2].title}`, `${data.items[1].products[3].title}`],
                 volumeBeverage: [`${data.items[1].products[0].description}`, `${data.items[1].products[1].description}`, `${data.items[1].products[2].description}`, `${data.items[1].products[3].description}`],
                 priceBeverage: [`${data.items[1].products[0].price}`, `${data.items[1].products[1].price}`, `${data.items[1].products[2].price}`, `${data.items[1].products[3].price}`],
@@ -143,66 +146,67 @@ export default class KioskPage extends Component {
 
         return (
             <div className='container_'>
-                <header>
-                    <h1>Блюда</h1>
-                </header>
-                <VerticalTabs nameDessertFirst={nameDessertFirst}
-                              nameDessertSecond={nameDessertSecond}
-                              priceDessertFirst={priceDessertFirst}
-                              priceDessertSecond={priceDessertSecond}
-                              nameDessertThird={nameDessertThird}
-                              priceDessertThird={priceDessertThird}
-                              nameDessertFourth={nameDessertFourth}
-                              priceDessertFourth={priceDessertFourth}
-                              nameBeverageFirst={nameBeverageFirst}
-                              nameBeverageSecond={nameBeverageSecond}
-                              nameBeverageThird={nameBeverageThird}
-                              nameBeverageFourth={nameBeverageFourth}
-                              volumeFirst={volumeFirst}
-                              volumeSecond={volumeSecond}
-                              volumeThird={volumeThird}
-                              volumeFourth={volumeFourth}
-                              priceBeverageFirst={priceBeverageFirst}
-                              priceBeverageSecond={priceBeverageSecond}
-                              priceBeverageThird={priceBeverageThird}
-                              priceBeverageFourth={priceBeverageFourth}
-                              nameSmoothieFirst={nameSmoothieFirst}
-                              nameSmoothieSecond={nameSmoothieSecond}
-                              nameSmoothieThird={nameSmoothieThird}
-                              priceSmoothieFirst={priceSmoothieFirst}
-                              priceSmoothieSecond={priceSmoothieSecond}
-                              priceSmoothieThird={priceSmoothieThird}
-                              volumeSmoothieFirst={volumeSmoothieFirst}
-                              volumeSmoothieSecond={volumeSmoothieSecond}
-                              volumeSmoothieThird={volumeSmoothieThird}
-                              nameSandwichFirst={nameSandwichFirst}
-                              nameSandwichSecond={nameSandwichSecond}
-                              nameSandwichThird={nameSandwichThird}
-                              nameSandwichFourth={nameSandwichFourth}
-                              priceSandwichFirst={priceSandwichFirst}
-                              priceSandwichSecond={priceSandwichSecond}
-                              priceSandwichThird={priceSandwichThird}
-                              priceSandwichFourth={priceSandwichFourth}
-                              descriptionSandwichFirst={descriptionSandwichFirst}
-                              countDessertsFirst={countDessertsFirst}
-                              countDessertsSecond={countDessertsSecond}
-                              countDessertsThird={countDessertsThird}
-                              countDessertsFourth={countDessertsFourth}
-                              countDessertsAll={countDessertsAll}
-                              countBeveragesFirst={countBeveragesFirst}
-                              countBeveragesSecond={countBeveragesSecond}
-                              countBeveragesThird={countBeveragesThird}
-                              countBeveragesFourth={countBeveragesFourth}
-                              countSmoothiesFirst={countSmoothiesFirst}
-                              countSmoothiesSecond={countSmoothiesSecond}
-                              countSmoothiesThird={countSmoothiesThird}
-                              countSandwichesFirst={countSandwichesFirst}
-                              countSandwichesSecond={countSandwichesSecond}
-                              countSandwichesThird={countSandwichesThird}
-                              countSandwichesFourth={countSandwichesFourth}
-                              countBeveragesAll={countBeveragesAll}
-                              countSmoothiesAll={countSmoothiesAll}
-                              countSandwichesAll={countSandwichesAll}/>
+                <MainMenu/>
+                <div style={{display: 'flex', justifyContent: 'flex-start'}}>
+                    <NavigationBar/>
+                    <VerticalTabs nameDessertFirst={nameDessertFirst}
+                                  nameDessertSecond={nameDessertSecond}
+                                  priceDessertFirst={priceDessertFirst}
+                                  priceDessertSecond={priceDessertSecond}
+                                  nameDessertThird={nameDessertThird}
+                                  priceDessertThird={priceDessertThird}
+                                  nameDessertFourth={nameDessertFourth}
+                                  priceDessertFourth={priceDessertFourth}
+                                  nameBeverageFirst={nameBeverageFirst}
+                                  nameBeverageSecond={nameBeverageSecond}
+                                  nameBeverageThird={nameBeverageThird}
+                                  nameBeverageFourth={nameBeverageFourth}
+                                  volumeFirst={volumeFirst}
+                                  volumeSecond={volumeSecond}
+                                  volumeThird={volumeThird}
+                                  volumeFourth={volumeFourth}
+                                  priceBeverageFirst={priceBeverageFirst}
+                                  priceBeverageSecond={priceBeverageSecond}
+                                  priceBeverageThird={priceBeverageThird}
+                                  priceBeverageFourth={priceBeverageFourth}
+                                  nameSmoothieFirst={nameSmoothieFirst}
+                                  nameSmoothieSecond={nameSmoothieSecond}
+                                  nameSmoothieThird={nameSmoothieThird}
+                                  priceSmoothieFirst={priceSmoothieFirst}
+                                  priceSmoothieSecond={priceSmoothieSecond}
+                                  priceSmoothieThird={priceSmoothieThird}
+                                  volumeSmoothieFirst={volumeSmoothieFirst}
+                                  volumeSmoothieSecond={volumeSmoothieSecond}
+                                  volumeSmoothieThird={volumeSmoothieThird}
+                                  nameSandwichFirst={nameSandwichFirst}
+                                  nameSandwichSecond={nameSandwichSecond}
+                                  nameSandwichThird={nameSandwichThird}
+                                  nameSandwichFourth={nameSandwichFourth}
+                                  priceSandwichFirst={priceSandwichFirst}
+                                  priceSandwichSecond={priceSandwichSecond}
+                                  priceSandwichThird={priceSandwichThird}
+                                  priceSandwichFourth={priceSandwichFourth}
+                                  descriptionSandwichFirst={descriptionSandwichFirst}
+                                  countDessertsFirst={countDessertsFirst}
+                                  countDessertsSecond={countDessertsSecond}
+                                  countDessertsThird={countDessertsThird}
+                                  countDessertsFourth={countDessertsFourth}
+                                  countDessertsAll={countDessertsAll}
+                                  countBeveragesFirst={countBeveragesFirst}
+                                  countBeveragesSecond={countBeveragesSecond}
+                                  countBeveragesThird={countBeveragesThird}
+                                  countBeveragesFourth={countBeveragesFourth}
+                                  countSmoothiesFirst={countSmoothiesFirst}
+                                  countSmoothiesSecond={countSmoothiesSecond}
+                                  countSmoothiesThird={countSmoothiesThird}
+                                  countSandwichesFirst={countSandwichesFirst}
+                                  countSandwichesSecond={countSandwichesSecond}
+                                  countSandwichesThird={countSandwichesThird}
+                                  countSandwichesFourth={countSandwichesFourth}
+                                  countBeveragesAll={countBeveragesAll}
+                                  countSmoothiesAll={countSmoothiesAll}
+                                  countSandwichesAll={countSandwichesAll}/>
+                </div>
             </div>
         )
     }

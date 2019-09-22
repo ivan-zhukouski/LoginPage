@@ -22,15 +22,16 @@ export default class LoginPage extends Component {
         super(props);
         this.state = {
             errorNone: {
-                display:'none',
+                display: 'none',
             },
-            iconError:'',
+            iconError: '',
             email: '',
             password: '',
             isLoading: false,
             error: false,
         };
     }
+
     handleChange = event => {
         this.setState({[event.target.id]: event.target.value})
     };
@@ -52,16 +53,22 @@ export default class LoginPage extends Component {
             console.log(data);
             localStorage.setItem('User', JSON.stringify(data))
         }).catch(() => {
-            this.setState({error: true, email: '', password: '', errorNone:{display:'block',color:'red',fontSize:'15px'}});
+            this.setState({
+                error: true,
+                email: '',
+                password: '',
+                errorNone: {display: 'block', color: 'red', fontSize: '15px'}
+            });
         });
     };
+
     render() {
         return (
             <div>
                 <div style={container} autoComplete="on">
-                    <h1 style={{marginTop: '100px', color: 'blue'}}>EasyMeal</h1>
+                    <h1 style={{marginTop: '100px', color: 'blue', textAlign: 'center'}}>EasyMeal</h1>
                     <form className='form'>
-                        <div >
+                        <div>
                             <Grid container spacing={1} alignItems="flex-end">
                                 <Grid item>
                                     <PersonIcon fontSize="large"/>
@@ -98,8 +105,8 @@ export default class LoginPage extends Component {
                                 </Grid>
                             </Grid>
                             <FormHelperText
-                                            style={this.state.errorNone}
-                                            id="component-error-text">
+                                style={this.state.errorNone}
+                                id="component-error-text">
                                 The E-mail address or password is incorrect
                             </FormHelperText>
                         </div>
@@ -111,7 +118,7 @@ export default class LoginPage extends Component {
                                 color="primary"
                                 onClick={this.handleOnClick}
                             >Login
-                                <CircularProgress size={20}  color="secondary" />
+                                <CircularProgress size={20} color="secondary"/>
                             </Button>
                         </div>
                     </form>
