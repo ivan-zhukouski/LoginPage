@@ -16,11 +16,7 @@ export default class DashBoard extends Component {
         this.state = {
             addressRu: '',
             addressEn: '',
-            currency: '',
             title: '',
-            hoursFrom: '',
-            hoursTo: '',
-            loc: '',
             id: '',
             displayNone: false,
         }
@@ -41,9 +37,6 @@ export default class DashBoard extends Component {
                 addressRu: `${data[0].address.ru}`,
                 addressEn: `${data[0].address.en}`,
                 title: `${data[0].title}`,
-                hoursFrom: `${data[0].hours.from}`,
-                hoursTo: `${data[0].hours.to}`,
-                currency: `${data[0].currency}`,
                 id: `${data[0].id}`,
             });
             console.log(this.state.id);
@@ -51,6 +44,7 @@ export default class DashBoard extends Component {
             console.log(error);
         });
     }
+
     displayNoneClick = () => {
         this.setState({displayNone: true})
     };
@@ -62,10 +56,10 @@ export default class DashBoard extends Component {
                 <div style={{display: 'flex', justifyContent: 'flex-start'}}>
                     <NavigationBar/>
                     <div className={this.state.displayNone ? 'displayNone' : 'displayBlock'}>
+                        <h3 style={{textAlign: 'center', marginTop: '15px'}}>Kiosks</h3>
                         <div style={{display: 'flex', justifyContent: 'flex-start'}}>
                             <div style={{display: 'flex', justifyContent: 'flex-start',}}>
                                 <div>
-                                    <h3 style={{textAlign: 'center', marginTop: '15px'}}>Kiosk</h3>
                                     <NavLink to={{
                                         pathname: '/kiosks/' + this.state.id,
                                     }}>
@@ -75,18 +69,12 @@ export default class DashBoard extends Component {
                                                 <CardMedia
                                                     className='media'
                                                     image="https://sc01.alicdn.com/kf/HTB1.5nJSpXXXXbhapXXq6xXFXXXX/Professional-Beverage-kiosk-design-Bubble-Tea-Showcase.jpg_350x350.jpg"
-                                                    title="Contemplative Reptile"
                                                 />
                                                 <CardContent>
                                                     <Typography gutterBottom
                                                                 variant="h5"
                                                                 component="h2">
-                                                        {this.state.title}
-                                                    </Typography>
-                                                    <Typography variant="body2" color="textSecondary" component="p">
-                                                        Адрес: {this.state.addressRu} ({this.state.addressEn})
-                                                        <br/> Время
-                                                        работы: {this.state.hoursFrom} - {this.state.hoursTo}<br/>Валюта: {this.state.currency}
+                                                        Kiosk {this.state.title} on {this.state.addressEn}
                                                     </Typography>
                                                 </CardContent>
                                             </CardActionArea>
@@ -94,29 +82,21 @@ export default class DashBoard extends Component {
                                     </NavLink>
                                 </div>
                                 <div>
-                                    <h3 style={{textAlign: 'center', marginTop: '15px'}}>Kiosk</h3>
                                     <NavLink to={{
                                         pathname: '/kiosks/' + this.state.id,
                                     }}>
-                                        <Card className='card'>
+                                        <Card onClick={this.displayNoneClick}
+                                              className='card'>
                                             <CardActionArea>
                                                 <CardMedia
                                                     className='media'
                                                     image="https://sc01.alicdn.com/kf/HTB1.5nJSpXXXXbhapXXq6xXFXXXX/Professional-Beverage-kiosk-design-Bubble-Tea-Showcase.jpg_350x350.jpg"
-                                                    title="Contemplative Reptile"
                                                 />
                                                 <CardContent>
                                                     <Typography gutterBottom
                                                                 variant="h5"
                                                                 component="h2">
-                                                        {this.state.title}
-                                                    </Typography>
-                                                    <Typography variant="body2"
-                                                                color="textSecondary"
-                                                                component="p">
-                                                        Адрес: {this.state.addressRu} ({this.state.addressEn})
-                                                        <br/> Время
-                                                        работы: {this.state.hoursFrom} - {this.state.hoursTo}<br/>Валюта: {this.state.currency}
+                                                        Kiosk {this.state.title} on {this.state.addressEn}
                                                     </Typography>
                                                 </CardContent>
                                             </CardActionArea>

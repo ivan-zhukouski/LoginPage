@@ -8,6 +8,7 @@ import StoreIcon from '@material-ui/icons/Store';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import CategoryIcon from '@material-ui/icons/Category';
 import {NavLink} from "react-router-dom";
+import './NavBar.css'
 
 export default class NavigationBar extends Component {
     render() {
@@ -19,7 +20,7 @@ export default class NavigationBar extends Component {
                 borderRight: '1px solid #e5f0f2'
             }}>
                 <List component="nav" aria-label="main mailbox folders">
-                    <NavLink exact activeClassName={'name'}
+                    <NavLink exact
                              activeStyle={{color: 'red'}}
                              to={{
                                  pathname: '/'
@@ -33,7 +34,7 @@ export default class NavigationBar extends Component {
                             <ListItemText primary="Dashboard"/>
                         </ListItem>
                     </NavLink>
-                    <NavLink activeClassName={'name'}
+                    <NavLink
                              activeStyle={{color: 'red'}} to={{
                         pathname: '/kiosks/'
                     }}>
@@ -44,22 +45,22 @@ export default class NavigationBar extends Component {
                             <ListItemText primary="Kiosks"/>
                         </ListItem>
                     </NavLink>
-                    <NavLink>
+                    <div >
                         <ListItem style={{borderBottom: '1px solid #e5f0f2'}} button>
                             <ListItemIcon>
                                 <FastfoodIcon/>
                             </ListItemIcon>
                             <ListItemText primary="Products"/>
                         </ListItem>
-                    </NavLink>
-                    <NavLink>
+                    </div>
+                    <div>
                         <ListItem style={{borderBottom: '1px solid #e5f0f2'}} button>
                             <ListItemIcon>
                                 <CategoryIcon/>
                             </ListItemIcon>
                             <ListItemText primary="Categories"/>
                         </ListItem>
-                    </NavLink>
+                    </div>
 
                 </List>
             </div>

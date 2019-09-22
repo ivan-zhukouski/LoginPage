@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import LoginPage from './Components/LoginPage/LoginPage'
 import {Route, Switch} from 'react-router-dom'
-import KioskPage from './Components/KioskPage'
+import KioskPage from './Components/Kiosks/KioskPage'
 import DashBoard from "./Components/Dashboard/DashBoard";
 
 class App extends React.Component {

@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {makeStyles} from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import {Card} from 'semantic-ui-react'
+import {Card} from "semantic-ui-react";
+import './Kiosk.css'
 
 function TabPanel(props) {
     const {children, value, index, ...other} = props;
@@ -15,8 +17,8 @@ function TabPanel(props) {
             component="div"
             role="tabpanel"
             hidden={value !== index}
-            id={`vertical-tabpanel-${index}`}
-            aria-labelledby={`vertical-tab-${index}`}
+            id={`scrollable-auto-tabpanel-${index}`}
+            aria-labelledby={`scrollable-auto-tab-${index}`}
             {...other}
         >
             <Box p={3}>{children}</Box>
@@ -32,24 +34,20 @@ TabPanel.propTypes = {
 
 function a11yProps(index) {
     return {
-        id: `vertical-tab-${index}`,
-        'aria-controls': `vertical-tabpanel-${index}`,
+        id: `scrollable-auto-tab-${index}`,
+        'aria-controls': `scrollable-auto-tabpanel-${index}`,
     };
 }
 
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
+        width: 400,
         backgroundColor: theme.palette.background.paper,
-        display: 'flex',
-        height: 500,
-    },
-    tabs: {
-        borderRight: `1px solid ${theme.palette.divider}`,
     },
 }));
 
-export default function VerticalTabs(props) {
+export default function GoodsPage(props) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -59,20 +57,22 @@ export default function VerticalTabs(props) {
 
     return (
         <div className={classes.root}>
-            <Tabs
-                orientation="vertical"
-                variant="scrollable"
-                value={value}
-                onChange={handleChange}
-                aria-label="Vertical tabs example"
-                className={classes.tabs}
-
-            >
-                <Tab label={'Десерты ' + '(' + props.countDessertsAll + ')'} {...a11yProps(0)}  />
-                <Tab label={'Лимонады ' + '(' + props.countBeveragesAll + ')'} {...a11yProps(1)} />
-                <Tab label={'Смузи ' + '(' + props.countSmoothiesAll + ')'} {...a11yProps(2)} />
-                <Tab label={'Сэндвичи ' + '(' + props.countSandwichesAll + ')'} {...a11yProps(3)} />
-            </Tabs>
+            <AppBar position="static" color="default">
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    variant="scrollable"
+                    scrollButtons="auto"
+                    aria-label="scrollable auto tabs example"
+                >
+                    <Tab label={"Десерты" + '(' + props.countDessertsAll + ')'} {...a11yProps(0)} />
+                    <Tab label={'Лимонады ' + '(' + props.countBeveragesAll + ')'} {...a11yProps(1)} />
+                    <Tab label={'Смузи ' + '(' + props.countSmoothiesAll + ')'} {...a11yProps(2)} />
+                    <Tab label={'Сэндвичи ' + '(' + props.countSandwichesAll + ')'} {...a11yProps(3)} />
+                </Tabs>
+            </AppBar>
             <TabPanel value={value} index={0}>
                 <div className='cards_size d_flex'>
                     <div className='card_'>
@@ -193,7 +193,7 @@ export default function VerticalTabs(props) {
                                  src="https://easymeal-app.s3.amazonaws.com/products/smoothie2.jpg" alt=''/>
                             <div className='description_size'>
                                 <h5>{props.nameSmoothieSecond}</h5>
-                                <span style={{fontSize: '10px'}}>{props.volumeSmoothieSecond}</span>
+                                <span style={{fontSize: '15px'}}>{props.volumeSmoothieSecond}</span>
                             </div>
                             <span>Количество: {props.countSmoothiesSecond}</span>
                             <span>Цена: {props.priceSmoothieSecond}</span>
