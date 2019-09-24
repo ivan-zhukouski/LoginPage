@@ -3,6 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import {Typography} from '@material-ui/core';
 import GoodsPage from './GoodsPage'
+import './Kiosk.css'
 
 export default class KioskInfo extends Component {
 
@@ -11,11 +12,11 @@ export default class KioskInfo extends Component {
             <React.Fragment>
                 <CssBaseline/>
                 <Container maxWidth="lg">
-                    <div style={{display: 'flex', justifyContent: 'space-around'}}>
-                        <div style={{width: '250px'}}>
+                    <div className='kioskInfo' >
+                        <div className='kioskInfoBlockOne'>
                             <h2>Kiosks > Kiosk on {this.props.kioskAddressEn} </h2>
                             <h2>General info:</h2>
-                            <Typography style={{color: 'grey', marginTop: '15px'}} variant='h5'>
+                            <Typography className='title' style={{color: 'grey', marginTop: '15px'}} variant='h5'>
                                 Title
                             </Typography>
                             <Typography style={{color: 'black', marginTop: '15px'}} variant='h5'>
@@ -39,25 +40,28 @@ export default class KioskInfo extends Component {
                                 fontSize: '15px'
                             }}>
                                 <div style={{width: '50%', marginRight: '15px'}}>
-                                    <p>From {this.props.hoursFrom}am</p>
+                                    <p>From {this.props.hoursFrom} am</p>
                                     <hr/>
                                 </div>
                                 <div style={{width: '50%'}}>
-                                    <p>To {this.props.hoursTo}pm</p>
+                                    <p>To {this.props.hoursTo} pm</p>
                                     <hr/>
                                 </div>
                             </div>
                         </div>
-                        <div style={{display: 'flex', alignItems: 'center', fontSize: '20px'}}>
-                            <a>
-                                Pick a location
-                            </a>
+                        <div className='blockTwo'>
+                            <div className='PickALocation' style={{display: 'flex', alignItems: 'center', fontSize: '20px',marginRight:'20px'}}>
+                                <a>
+                                    Pick a location
+                                </a>
+                            </div>
+                            <div style={{display: 'flex', alignItems: 'center'}}>
+                                <img style={{width: '200px'}}
+                                     src="https://sc01.alicdn.com/kf/HTB1.5nJSpXXXXbhapXXq6xXFXXXX/Professional-Beverage-kiosk-design-Bubble-Tea-Showcase.jpg_350x350.jpg"
+                                     alt=''/>
+                            </div>
                         </div>
-                        <div style={{display: 'flex', alignItems: 'center'}}>
-                            <img style={{width: '200px'}}
-                                 src="https://sc01.alicdn.com/kf/HTB1.5nJSpXXXXbhapXXq6xXFXXXX/Professional-Beverage-kiosk-design-Bubble-Tea-Showcase.jpg_350x350.jpg"
-                                 alt=''/>
-                        </div>
+
                     </div>
                     <h2>Products</h2>
                     <div style={{display: 'flex', justifyContent: 'centers'}}>

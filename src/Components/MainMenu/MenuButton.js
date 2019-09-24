@@ -1,24 +1,64 @@
-import React, {Component} from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+import React from 'react';
+import {withStyles} from '@material-ui/core/styles';
+import Menu from '@material-ui/core/Menu';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import MenuIcon from '@material-ui/icons/Menu';
+import IconButton from "@material-ui/core/IconButton";
+import List from "@material-ui/core/List";
+import {NavLink} from "react-router-dom";
+import ListItem from "@material-ui/core/ListItem";
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import StoreIcon from '@material-ui/icons/Store';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import CategoryIcon from '@material-ui/icons/Category';
-import {NavLink} from "react-router-dom";
 import './NavBar.css'
 
-export default class NavigationBar extends Component {
-    render() {
-        return (
-            <div className='navDisplayNone' style={{
-                height: '100vh',
-                width: '100%',
-                maxWidth: '200px',
-                borderRight: '1px solid #e5f0f2'
-            }}>
+const StyledMenu = withStyles({
+    paper: {
+        border: '1px solid #d3d4d5',
+    },
+})(props => (
+    <Menu
+        elevation={0}
+        getContentAnchorEl={null}
+        anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+        }}
+        transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+        }}
+        {...props}
+    />
+));
+export default function MenuButton() {
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = event => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    return (
+        <div>
+            <IconButton edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        onClick={handleClick}>
+                <MenuIcon/>
+            </IconButton>
+            <StyledMenu
+                id="customized-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+            >
                 <List component="nav" aria-label="main mailbox folders">
                     <NavLink exact
                              activeStyle={{color: 'red'}}
@@ -35,7 +75,7 @@ export default class NavigationBar extends Component {
                         </ListItem>
                     </NavLink>
                     <NavLink
-                             activeStyle={{color: 'red'}} to={{
+                        activeStyle={{color: 'red'}} to={{
                         pathname: '/kiosks/'
                     }}>
                         <ListItem style={{borderBottom: '1px solid #e5f0f2'}} button>
@@ -45,7 +85,7 @@ export default class NavigationBar extends Component {
                             <ListItemText primary="Kiosks"/>
                         </ListItem>
                     </NavLink>
-                    <div >
+                    <div>
                         <ListItem style={{borderBottom: '1px solid #e5f0f2'}} button>
                             <ListItemIcon>
                                 <FastfoodIcon/>
@@ -62,8 +102,7 @@ export default class NavigationBar extends Component {
                         </ListItem>
                     </div>
                 </List>
-            </div>
-        );
-    }
-
+            </StyledMenu>
+        </div>
+    );
 }

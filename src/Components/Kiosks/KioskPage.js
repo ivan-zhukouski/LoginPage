@@ -3,6 +3,7 @@ import 'semantic-ui-css/semantic.min.css'
 import MainMenu from "../MainMenu/MainMenu";
 import NavigationBar from "../MainMenu/NavigationBar";
 import KioskInfo from "./KioskInfo";
+import './Kiosk.css'
 
 
 const url = 'https://www.api.fastbuy.by/kiosk/api/v1/kiosks/5d372f320d2567534c1ba603';
@@ -160,7 +161,7 @@ export default class KioskPage extends Component {
         return (
             <div className='container_'>
                 <MainMenu/>
-                <div style={{display: 'flex', justifyContent: 'space-around'}}>
+                <div className='kioskInfo'>
                     <NavigationBar/>
                     <KioskInfo kioskAddressEn={kioskAddressEn}
                                kioskTitle={kioskTitle}

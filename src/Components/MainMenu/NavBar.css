@@ -1,0 +1,19 @@
+
+.none{
+    display: none;
+}
+.block{
+    display:block;
+}
+.menuDisplayNone{
+    display:none;
+}
+
+@media screen and (max-width: 768px){
+    .menuDisplayNone{
+        display:block;
+    }
+    .navDisplayNone{
+        display:none;
+    }
+}
