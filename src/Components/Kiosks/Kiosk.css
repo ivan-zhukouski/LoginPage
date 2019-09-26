@@ -6,6 +6,16 @@
     display: flex;
     justify-content: space-around;
 }
+.productsPageFlex{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    font-size: 15px;
+}
+.workHoursFlex{
+    display: flex;
+    justify-content: flex-start;
+}
 .kioskInfoBlockOne{
     width: 250px;
 }
@@ -33,5 +43,9 @@
     }
     .PickALocation{
         margin-top: 20px;
+    }
+    .kioskInfo{
+        justify-content: center;
+        flex-flow: column;
     }
 }

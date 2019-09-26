@@ -33,12 +33,7 @@ export default class KioskInfo extends Component {
                             <Typography style={{color: 'grey', marginTop: '15px'}} variant='h5'>
                                 Working hours
                             </Typography>
-                            <div style={{
-                                display: 'flex',
-                                justifyContent: 'flex-start',
-                                marginTop: '15px',
-                                fontSize: '15px'
-                            }}>
+                            <div className='workHoursFlex' >
                                 <div style={{width: '50%', marginRight: '15px'}}>
                                     <p>From {this.props.hoursFrom} am</p>
                                     <hr/>
@@ -64,7 +59,7 @@ export default class KioskInfo extends Component {
 
                     </div>
                     <h2>Products</h2>
-                    <div style={{display: 'flex', justifyContent: 'centers'}}>
+                    <div className='productsPageFlex' >
                         <GoodsPage
                             kioskAddressEn={this.props.kioskAddressEn}
                             kioskTitle={this.props.kioskTitle}
