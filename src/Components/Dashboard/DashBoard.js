@@ -45,10 +45,6 @@ export default class DashBoard extends Component {
         });
     }
 
-    displayNoneClick = () => {
-        this.setState({displayNone: true})
-    };
-
     render() {
         return (
             <div>
@@ -57,52 +53,50 @@ export default class DashBoard extends Component {
                     <NavigationBar/>
                     <div className={this.state.displayNone ? 'displayNone' : 'displayBlock'}>
                         <h3 style={{textAlign: 'center', marginTop: '15px'}}>Kiosks</h3>
-                        <div style={{display: 'flex', justifyContent: 'flex-start'}}>
-                            <div style={{display: 'flex', justifyContent: 'flex-start',}}>
-                                <div>
-                                    <NavLink to={{
-                                        pathname: '/kiosks/' + this.state.id,
-                                    }}>
-                                        <Card onClick={this.displayNoneClick}
-                                              className='card'>
-                                            <CardActionArea>
-                                                <CardMedia
-                                                    className='media'
-                                                    image="https://sc01.alicdn.com/kf/HTB1.5nJSpXXXXbhapXXq6xXFXXXX/Professional-Beverage-kiosk-design-Bubble-Tea-Showcase.jpg_350x350.jpg"
-                                                />
-                                                <CardContent>
-                                                    <Typography gutterBottom
-                                                                variant="h5"
-                                                                component="h2">
-                                                        Kiosk {this.state.title} on {this.state.addressEn}
-                                                    </Typography>
-                                                </CardContent>
-                                            </CardActionArea>
-                                        </Card>
-                                    </NavLink>
-                                </div>
-                                <div>
-                                    <NavLink to={{
-                                        pathname: '/kiosks/' + this.state.id,
-                                    }}>
-                                        <Card onClick={this.displayNoneClick}
-                                              className='card'>
-                                            <CardActionArea>
-                                                <CardMedia
-                                                    className='media'
-                                                    image="https://sc01.alicdn.com/kf/HTB1.5nJSpXXXXbhapXXq6xXFXXXX/Professional-Beverage-kiosk-design-Bubble-Tea-Showcase.jpg_350x350.jpg"
-                                                />
-                                                <CardContent>
-                                                    <Typography gutterBottom
-                                                                variant="h5"
-                                                                component="h2">
-                                                        Kiosk {this.state.title} on {this.state.addressEn}
-                                                    </Typography>
-                                                </CardContent>
-                                            </CardActionArea>
-                                        </Card>
-                                    </NavLink>
-                                </div>
+                        <div className='mainDashboard'>
+                            <div>
+                                <NavLink to={{
+                                    pathname: '/kiosks/' + this.state.id,
+                                }}>
+                                    <Card onClick={this.displayNoneClick}
+                                          className='cards'>
+                                        <CardActionArea>
+                                            <CardMedia
+                                                className='media'
+                                                image="https://sc01.alicdn.com/kf/HTB1.5nJSpXXXXbhapXXq6xXFXXXX/Professional-Beverage-kiosk-design-Bubble-Tea-Showcase.jpg_350x350.jpg"
+                                            />
+                                            <CardContent>
+                                                <Typography gutterBottom
+                                                            variant="h5"
+                                                            component="h2">
+                                                    Kiosk {this.state.title} on {this.state.addressEn}
+                                                </Typography>
+                                            </CardContent>
+                                        </CardActionArea>
+                                    </Card>
+                                </NavLink>
+                            </div>
+                            <div>
+                                <NavLink to={{
+                                    pathname: '/kiosks/' + this.state.id,
+                                }}>
+                                    <Card onClick={this.displayNoneClick}
+                                          className='cards'>
+                                        <CardActionArea>
+                                            <CardMedia
+                                                className='media'
+                                                image="https://sc01.alicdn.com/kf/HTB1.5nJSpXXXXbhapXXq6xXFXXXX/Professional-Beverage-kiosk-design-Bubble-Tea-Showcase.jpg_350x350.jpg"
+                                            />
+                                            <CardContent>
+                                                <Typography gutterBottom
+                                                            variant="h5"
+                                                            component="h2">
+                                                    Kiosk {this.state.title} on {this.state.addressEn}
+                                                </Typography>
+                                            </CardContent>
+                                        </CardActionArea>
+                                    </Card>
+                                </NavLink>
                             </div>
                         </div>
                     </div>

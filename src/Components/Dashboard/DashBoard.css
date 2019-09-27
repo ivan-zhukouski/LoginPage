@@ -1,5 +1,5 @@
 
-.card{
+.cards{
     max-width: 200px;
     margin-left:15px;
     height: 300px;
@@ -13,4 +13,25 @@
 }
 .displayBlock{
     display: block;
+}
+.mainDashboard{
+    display: flex;
+    justify-content: flex-start;
+}
+@media screen and (max-width: 768px) {
+    .cards{
+        width: 180px;
+        height: 250px;
+        margin-top: 20px;
+    }
+    .media{
+        height: 120px;
+    }
+    .mainDashboard{
+        justify-content: center;
+        flex-flow: wrap;
+    }
+    .card_{
+        height: auto;
+    }
 }

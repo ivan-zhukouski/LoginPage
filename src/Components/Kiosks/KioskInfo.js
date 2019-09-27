@@ -12,7 +12,7 @@ export default class KioskInfo extends Component {
             <React.Fragment>
                 <CssBaseline/>
                 <Container maxWidth="lg">
-                    <div className='kioskInfo' >
+                    <div className='kioskInfo'>
                         <div className='kioskInfoBlockOne'>
                             <h2>Kiosks > Kiosk on {this.props.kioskAddressEn} </h2>
                             <h2>General info:</h2>
@@ -33,7 +33,7 @@ export default class KioskInfo extends Component {
                             <Typography style={{color: 'grey', marginTop: '15px'}} variant='h5'>
                                 Working hours
                             </Typography>
-                            <div className='workHoursFlex' >
+                            <div className='workHoursFlex'>
                                 <div style={{width: '50%', marginRight: '15px'}}>
                                     <p>From {this.props.hoursFrom} am</p>
                                     <hr/>
@@ -45,7 +45,8 @@ export default class KioskInfo extends Component {
                             </div>
                         </div>
                         <div className='blockTwo'>
-                            <div className='PickALocation' style={{display: 'flex', alignItems: 'center', fontSize: '20px',marginRight:'20px'}}>
+                            <div className='PickALocation'
+                                 style={{display: 'flex', alignItems: 'center', fontSize: '20px', marginRight: '20px'}}>
                                 <a>
                                     Pick a location
                                 </a>
@@ -56,10 +57,9 @@ export default class KioskInfo extends Component {
                                      alt=''/>
                             </div>
                         </div>
-
                     </div>
                     <h2>Products</h2>
-                    <div className='productsPageFlex' >
+                    <div className='productsPageFlex'>
                         <GoodsPage
                             kioskAddressEn={this.props.kioskAddressEn}
                             kioskTitle={this.props.kioskTitle}
@@ -123,7 +123,6 @@ export default class KioskInfo extends Component {
                             priceSmoothieSecond={this.props.priceSmoothieSecond}
                             priceSmoothieFirst={this.props.priceSmoothieFirst}/>
                     </div>
-
                 </Container>
             </React.Fragment>
         )

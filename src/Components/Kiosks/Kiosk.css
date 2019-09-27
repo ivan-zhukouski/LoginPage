@@ -2,6 +2,9 @@
     display: flex;
     justify-content: flex-start;
 }
+.fontSize{
+    font-size: 10px;
+}
 .kioskInfo{
     display: flex;
     justify-content: space-around;
@@ -19,13 +22,17 @@
 .kioskInfoBlockOne{
     width: 250px;
 }
-.card_{
+.cards{
     width: 150px;
-    height: 300px;
+    height: 250px;
     margin-left: 20px;
 }
+.fullHeight{
+    height: 100%;
+}
 .img_size{
-    height: 130px;
+    height: 150px;
+    width: 100%;
 }
 .blockTwo{
     display: flex;
@@ -36,16 +43,31 @@
     .kioskInfoBlockOne{
         width:150px;
     }
+    .PickALocation{
+        margin-top: 20px;
+    }
     .blockTwo{
         display: flex;
         justify-content:center;
         flex-flow: column-reverse;
     }
-    .PickALocation{
-        margin-top: 20px;
+    .d_flex{
+
+        flex-flow: wrap;
     }
+    .cards{
+        height: 300px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+
     .kioskInfo{
         justify-content: center;
         flex-flow: column;
+    }
+    .d_flex{
+        justify-content: center;
     }
 }

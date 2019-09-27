@@ -20,9 +20,10 @@ export default class MainMenu extends Component {
             hoursFrom: '',
             hoursTo: '',
             loc: '',
-            id:'',
+            id: '',
         }
     }
+
     componentDidMount() {
         fetch(url, {
             method: 'GET',
@@ -41,36 +42,39 @@ export default class MainMenu extends Component {
                 hoursFrom: `${data[0].hours.from}`,
                 hoursTo: `${data[0].hours.to}`,
                 currency: `${data[0].currency}`,
-                id:`${data[0].id}`,
+                id: `${data[0].id}`,
             });
             console.log(this.state.id);
         }).catch(error => {
             console.log(error);
         });
     }
-    handleLogout = ()=>{
+
+    handleLogout = () => {
         localStorage.removeItem('User');
     };
+
     render() {
         return (
             <div>
-                <div style={{flexGrow:'1'}}>
+                <div style={{flexGrow: '1'}}>
                     <AppBar position="static">
                         <Toolbar>
-                            <div className='menuDisplayNone'  >
+                            <div className='menuDisplayNone'>
                                 <MenuButton/>
                             </div>
-                            <Typography variant="h6" style={{flexGrow:'1'}}>
+                            <Typography variant="h6" style={{flexGrow: '1'}}>
                                 EasyMeal
                             </Typography>
-                            <div style={{display:'flex', justifyContent:'flex-end'}}>
+                            <div className='marginPerson' style={{display: 'flex', justifyContent: 'flex-end'}}>
                                 <AccountCircle/>
-                                <p style={{marginRight:'100px'}}>Person</p>
+                                <p className='personMargin'>Person</p>
                             </div>
                             <NavLink to={{
-                                pathname:'/login'
+                                pathname: '/login'
                             }}>
-                                <Button style={{color:'white'}} color="inherit" onClick={this.handleLogout} >Logout</Button>
+                                <Button style={{color: 'white'}} color="inherit"
+                                        onClick={this.handleLogout}>Logout</Button>
 
                             </NavLink>
                         </Toolbar>
