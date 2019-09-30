@@ -38,6 +38,9 @@
     display: flex;
     justify-content: flex-end;
 }
+.title{
+    width: 100%;
+}
 
 @media screen and (max-width: 768px) {
     .kioskInfoBlockOne{

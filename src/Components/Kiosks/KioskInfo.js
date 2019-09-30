@@ -3,10 +3,15 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import {Typography} from '@material-ui/core';
 import GoodsPage from './GoodsPage'
+import TextField from '@material-ui/core/TextField'
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import './Kiosk.css'
 
-export default class KioskInfo extends Component {
 
+export default class KioskInfo extends Component {
     render() {
         return (
             <React.Fragment>
@@ -16,23 +21,36 @@ export default class KioskInfo extends Component {
                         <div className='kioskInfoBlockOne'>
                             <h2>Kiosks > Kiosk on {this.props.kioskAddressEn} </h2>
                             <h2>General info:</h2>
-                            <Typography className='title' style={{color: 'grey', marginTop: '15px'}} variant='h5'>
-                                Title
-                            </Typography>
-                            <Typography style={{color: 'black', marginTop: '15px'}} variant='h5'>
-                                {this.props.kioskTitle}
-                            </Typography>
-                            <hr/>
-                            <Typography style={{color: 'grey', marginTop: '15px'}} variant='h5'>
-                                Address
-                            </Typography>
-                            <Typography style={{color: 'black', marginTop: '15px'}} variant='h5'>
-                                {this.props.kioskAddressEn}
-                            </Typography>
-                            <hr/>
+                            <TextField
+                                id="standard-name"
+                                label="Title"
+                                value={this.props.kioskTitle}
+                                margin="normal"
+                                className='title'
+                            />
+                            <TextField
+                                id="standard-name"
+                                label="Address"
+                                value={this.props.kioskAddressEn}
+                                margin="normal"
+                                className='title'
+                            />
                             <Typography style={{color: 'grey', marginTop: '15px'}} variant='h5'>
                                 Working hours
                             </Typography>
+                            <FormControl style={{width:'150px'}}>
+                                <InputLabel htmlFor="age-simple">From</InputLabel>
+                                <Select
+                                    inputProps={{
+                                        name: 'from',
+                                        id: 'age-simple',
+                                    }}
+                                >
+                                    <MenuItem value={0}>0</MenuItem>
+                                    <MenuItem value={1}>1</MenuItem>
+                                    <MenuItem value={2}>2</MenuItem>
+                                </Select>
+                            </FormControl>
                             <div className='workHoursFlex'>
                                 <div style={{width: '50%', marginRight: '15px'}}>
                                     <p>From {this.props.hoursFrom} am</p>
