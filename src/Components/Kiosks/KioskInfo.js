@@ -13,11 +13,11 @@ import SimpleSelect from './Selects/SelectFrom'
 
 
 export default function KioskInfo(props) {
-    const[values, setValues]=React.useState({
-        from:'',
-        am:'',
-        to:'',
-        amPm:''
+    const [values, setValues] = React.useState({
+        from: '',
+        am: '',
+        to: '',
+        amPm: ''
     });
 
     const handleChange = event => {
@@ -52,7 +52,7 @@ export default function KioskInfo(props) {
                         <Typography style={{color: 'grey', marginTop: '15px'}} variant='h5'>
                             Working hours
                         </Typography>
-                        <div className='workHoursFlex' >
+                        <div className='workHoursFlex'>
                             <FormControl style={{width: '50%', marginRight: '15px'}}>
                                 <InputLabel>From</InputLabel>
                                 <Select
@@ -63,7 +63,7 @@ export default function KioskInfo(props) {
                                         id: 'age-simple',
                                     }}
                                 >
-                                    <MenuItem value={0} >0</MenuItem>
+                                    <MenuItem value={0}>0</MenuItem>
                                     <MenuItem value={1}>1</MenuItem>
                                     <MenuItem value={2}>2</MenuItem>
                                     <MenuItem value={3}>3</MenuItem>
@@ -79,7 +79,7 @@ export default function KioskInfo(props) {
                                 </Select>
 
                             </FormControl>
-                            <FormControl style={{width:'60px'}}>
+                            <FormControl style={{width: '60px'}}>
                                 <InputLabel>am/pm</InputLabel>
                                 <Select
                                     value={values.am}
@@ -89,7 +89,7 @@ export default function KioskInfo(props) {
                                         id: 'age-simple',
                                     }}
                                 >
-                                    <MenuItem value={0} >am</MenuItem>
+                                    <MenuItem value={0}>am</MenuItem>
                                     <MenuItem value={1}>pm</MenuItem>
                                 </Select>
                             </FormControl>
@@ -105,7 +105,7 @@ export default function KioskInfo(props) {
                                         id: 'age-simple',
                                     }}
                                 >
-                                    <MenuItem value={0} >0</MenuItem>
+                                    <MenuItem value={0}>0</MenuItem>
                                     <MenuItem value={1}>1</MenuItem>
                                     <MenuItem value={2}>2</MenuItem>
                                     <MenuItem value={3}>3</MenuItem>
@@ -121,7 +121,7 @@ export default function KioskInfo(props) {
                                 </Select>
 
                             </FormControl>
-                            <FormControl style={{width:'60px'}}>
+                            <FormControl style={{width: '60px'}}>
                                 <InputLabel>am/pm</InputLabel>
                                 <Select
                                     value={values.amPm}
@@ -131,7 +131,7 @@ export default function KioskInfo(props) {
                                         id: 'age-simple',
                                     }}
                                 >
-                                    <MenuItem value={0} >am</MenuItem>
+                                    <MenuItem value={0}>am</MenuItem>
                                     <MenuItem value={1}>pm</MenuItem>
                                 </Select>
                             </FormControl>
