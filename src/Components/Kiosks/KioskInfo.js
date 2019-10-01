@@ -9,7 +9,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import './Kiosk.css'
-import SimpleSelect from './Selects/SelectFrom'
 
 
 export default function KioskInfo(props) {
