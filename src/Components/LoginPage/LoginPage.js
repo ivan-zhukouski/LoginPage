@@ -34,6 +34,7 @@ export default class LoginPage extends Component {
 
     handleChange = event => {
         this.setState({[event.target.id]: event.target.value})
+        console.log(event)
     };
     handleOnClick = event => {
         event.preventDefault();
