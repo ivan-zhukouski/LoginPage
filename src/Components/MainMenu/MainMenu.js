@@ -49,7 +49,6 @@ export default class MainMenu extends Component {
             console.log(error);
         });
     }
-
     handleLogout = () => {
         localStorage.removeItem('User');
     };

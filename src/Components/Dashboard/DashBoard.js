@@ -8,7 +8,6 @@ import './DashBoard.css'
 import {NavLink} from "react-router-dom";
 import MainMenu from "../MainMenu/MainMenu";
 import NavigationBar from "../MainMenu/NavigationBar";
-
 const url = 'https://www.api.fastbuy.by/kiosk/api/v1/kiosks';
 export default class DashBoard extends Component {
     constructor(props) {
