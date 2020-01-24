@@ -63,7 +63,7 @@ export default class MainMenu extends Component {
                                 <MenuButton/>
                             </div>
                             <Typography variant="h6" style={{flexGrow: '1'}}>
-                                EasyMeal
+                                Admin
                             </Typography>
                             <div className='marginPerson' style={{display: 'flex', justifyContent: 'flex-end'}}>
                                 <AccountCircle/>
@@ -74,7 +74,6 @@ export default class MainMenu extends Component {
                             }}>
                                 <Button style={{color: 'white'}} color="inherit"
                                         onClick={this.handleLogout}>Logout</Button>
-
                             </NavLink>
                         </Toolbar>
                     </AppBar>

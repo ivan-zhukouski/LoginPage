@@ -7,6 +7,7 @@ import LockIcon from '@material-ui/icons/Lock';
 import './LoginPage.css'
 import FormHelperText from '@material-ui/core/FormHelperText';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import {Redirect} from 'react-router-dom'
 
 const container = {
     maxWidth: 960,
@@ -48,11 +49,11 @@ export default class LoginPage extends Component {
         }).then(response => {
             response.ok ? this.setState({error: false})
                 : new Promise.reject();
-            this.props.history.push({pathname: '/'});
             return response.json();
         }).then((data) => {
             console.log(data);
-            localStorage.setItem('User', JSON.stringify(data))
+            localStorage.setItem('User', JSON.stringify(data));
+            this.props.history.push({pathname: '/'});
         }).catch(() => {
             this.setState({
                 error: true,
@@ -62,11 +63,10 @@ export default class LoginPage extends Component {
             });
         });
     };
-
     render() {
         return (
             <div>
-                <div style={container} autoComplete="on">
+                <div style={container} >
                     <h1 style={{marginTop: '100px', color: 'blue', textAlign: 'center'}}>EasyMeal</h1>
                     <form className='form'>
                         <div>

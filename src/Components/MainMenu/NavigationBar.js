@@ -25,7 +25,6 @@ export default class NavigationBar extends Component {
                              to={{
                                  pathname: '/'
                              }}
-
                     >
                         <ListItem style={{borderBottom: '1px solid #e5f0f2'}} button>
                             <ListItemIcon>

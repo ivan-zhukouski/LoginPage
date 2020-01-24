@@ -5,7 +5,6 @@ import NavigationBar from "../MainMenu/NavigationBar";
 import KioskInfo from "./KioskInfo";
 import './Kiosk.css'
 
-
 const url = 'https://www.api.fastbuy.by/kiosk/api/v1/kiosks/5d372f320d2567534c1ba603';
 export default class KioskPage extends Component {
     constructor(props) {
