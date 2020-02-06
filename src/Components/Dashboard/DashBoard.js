@@ -5,7 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import './DashBoard.css'
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import MainMenu from "../MainMenu/MainMenu";
 import NavigationBar from "../MainMenu/NavigationBar";
 const url = 'https://www.api.fastbuy.by/kiosk/api/v1/kiosks';

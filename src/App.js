@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import LoginPage from './Components/LoginPage/LoginPage'
-import {Route, Switch, Redirect} from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import KioskPage from './Components/Kiosks/KioskPage'
 import DashBoard from "./Components/Dashboard/DashBoard";
 
